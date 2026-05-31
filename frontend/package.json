@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "setup:host": "bash scripts/setup-dev-host.sh",
+    "predev": "node scripts/ensure-dev-host.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
