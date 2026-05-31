@@ -1,0 +1,25 @@
+# Local toolchain (optional)
+.tools/
+
+# Dependencies & build output
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+
+# Environment & OS
+.env
+.env.local
+.env.*.local
+!.env.development
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.idea/
+.vscode/*
+!.vscode/extensions.json

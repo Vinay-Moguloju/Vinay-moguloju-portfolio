@@ -18,6 +18,17 @@ PostgreSQL → Spring Boot (REST) → React (dataservices → webservices)
 
 **Phase 2+ (optional, not v1):** Apache Kafka for async events; Hadoop for batch analytics. See [Appendix: Kafka and Hadoop](#appendix-kafka-and-hadoop-phase-2).
 
+### Implementation status
+
+| Module | Status | Notes |
+|--------|--------|-------|
+| `frontend/` | **Done (v1 starter)** | Vite 5 + React 18 + TypeScript; dev server on port **5173** |
+| `docs/ARCHITECTURE.md` | **Done** | System design |
+| `docs/PROJECT_STRUCTURE.md` | **Done** | Categorized file map |
+| `backend/` | Planned | Spring Boot REST API not scaffolded yet |
+| PostgreSQL / Flyway | Planned | Schema defined below; migrations live with backend |
+| Kafka / Hadoop | Phase 2+ | Documented in appendix only |
+
 ### System context
 
 ```mermaid
@@ -428,33 +439,40 @@ Parent and Spring Boot version: **3.3.x** (or latest 3.x stable). Java **17** or
 
 ## 5. React Frontend
 
+The `frontend/` app is **implemented and runnable** without the backend. The default Vite + React starter page is served at `http://localhost:5173/` via `HomePage`. API modules under `dataservices/api/` will be added as the Spring Boot endpoints are built.
+
 ### 5.1 Directory layout
+
+Files are grouped by **category** (app shell, UI, data, styles). Full categorized map: [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md).
 
 ```
 frontend/
-  public/
+  public/                         # Static files (favicon, icon sprite)
   src/
-    webservices/              # UI only — no backend HTTP calls
-      components/             # Button, Card, Layout, Navbar, Footer
-      pages/                  # Home, Projects, About, Contact
-      hooks/                  # useTheme, useScroll (UI state only)
-      styles/
-    dataservices/             # API integration only
-      api/
-        client.ts             # Base URL, headers, error handling
-        profileApi.ts
-        projectsApi.ts
-        skillsApi.ts
-        experienceApi.ts
-        contactApi.ts
-      types/                  # TypeScript interfaces matching DTOs
-      constants.ts
-    App.tsx
-    main.tsx
-  package.json
-  vite.config.ts
+    main.tsx                      # Entry — mounts React
+    app/                          # Application shell (routing)
+      App.tsx
+      routes.tsx
+    styles/
+      global.css                  # Site-wide CSS
+    webservices/                  # UI layer — no HTTP calls
+      pages/home/
+        HomePage.tsx              # Route: /
+        HomePage.css
+      components/                 # Reusable UI (planned)
+      layouts/                    # Page shells (planned)
+      assets/                     # react.svg, vite.svg, hero.png
+    dataservices/                 # API layer — no JSX
+      config/constants.ts         # API_BASE_URL
+      api/client.ts               # Axios instance
+      api/index.ts
+      types/index.ts
   .env.development
+  package.json
+  vite.config.ts                  # Path aliases: @app, @webservices, @dataservices, @styles
 ```
+
+**Planned additions:** `webservices/pages/projects/`, `dataservices/api/projectsApi.ts`, etc.
 
 ### 5.2 Separation rules
 
@@ -468,10 +486,10 @@ frontend/
 Example orchestration (conceptual):
 
 ```tsx
-// webservices/pages/ProjectsPage.tsx
+// webservices/pages/projects/ProjectsPage.tsx
 import { useEffect, useState } from "react";
-import { fetchProjects } from "../../dataservices/api/projectsApi";
-import { ProjectList } from "../components/ProjectList";
+import { fetchProjects } from "@dataservices/api/projectsApi";
+import { ProjectList } from "@webservices/components/ProjectList";
 
 export function ProjectsPage() {
   const [projects, setProjects] = useState([]);
@@ -482,31 +500,49 @@ export function ProjectsPage() {
 }
 ```
 
-### 5.3 npm dependencies (`package.json`)
+### 5.3 npm scripts
+
+| Script | Command | Purpose |
+|--------|---------|---------|
+| `dev` | `vite` | Local dev server (default **http://localhost:5173**) |
+| `build` | `tsc -b && vite build` | Production build → `frontend/dist/` |
+| `preview` | `vite preview` | Serve production build locally |
+| `lint` | `eslint .` | Lint TypeScript/React sources |
+
+### 5.4 npm dependencies (`package.json`)
+
+Pinned to **Vite 5** and **React 18** for broad Node 20 LTS compatibility (Vite 8+ requires Node 20.19+).
 
 **Dependencies (runtime):**
 
 ```json
 {
   "dependencies": {
+    "axios": "^1.7.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.28.0",
-    "axios": "^1.7.7"
+    "react-router-dom": "^6.28.0"
   }
 }
 ```
 
-**DevDependencies (build + TypeScript):**
+**DevDependencies (build, TypeScript, ESLint):**
 
 ```json
 {
   "devDependencies": {
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.3",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.10"
+    "@types/node": "^22.10.2",
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^5.4.11"
   }
 }
 ```
@@ -526,20 +562,42 @@ export function ProjectsPage() {
 }
 ```
 
-### 5.4 Environment variables
+### 5.5 Routing (implemented)
 
-File: `frontend/.env.development`
+| Path | Component | Description |
+|------|-----------|-------------|
+| `/` | `webservices/pages/home/HomePage` | Vite + React starter (counter, logos, doc links) |
+
+Routes are declared in `app/routes.tsx`; `App.tsx` renders them via `react-router-dom`. Add new pages under `webservices/pages/<name>/` and register paths in `routes.tsx`.
+
+### 5.6 Axios client (implemented)
+
+`dataservices/api/client.ts` exports a shared `apiClient` with `baseURL` from `constants.ts` and a response interceptor that normalizes errors. Domain APIs (`profileApi.ts`, etc.) should import `apiClient` and stay out of `webservices/`.
+
+### 5.7 Environment variables
+
+File: `frontend/.env.development` (committed; no secrets):
 
 ```env
 VITE_API_BASE_URL=http://localhost:8080/api
 ```
 
-Usage in `dataservices/constants.ts`:
+Usage in `dataservices/config/constants.ts`:
 
 ```ts
 export const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8080/api";
+  import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080/api'
 ```
+
+### 5.8 Run frontend only (no backend yet)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open **http://localhost:5173**. The UI runs standalone; API calls will work once `backend/` is running on port **8080** with CORS enabled for `http://localhost:5173`.
 
 ---
 
@@ -548,10 +606,12 @@ export const API_BASE_URL =
 ```
 Vinay-moguloju-portfolio/
   docs/
-    ARCHITECTURE.md       # This document
-  backend/                # Spring Boot application
-  frontend/               # React + Vite application
-  docker-compose.yml      # Optional: PostgreSQL for local dev
+    ARCHITECTURE.md         # This document
+    PROJECT_STRUCTURE.md    # Files by category & purpose
+  frontend/                 # React + Vite (implemented)
+  backend/                  # Spring Boot (planned)
+  docker-compose.yml        # Optional: PostgreSQL (planned)
+  .gitignore
   README.md
 ```
 
@@ -604,9 +664,17 @@ volumes:
 
 ### 7.3 Development workflow
 
+**Today (frontend only):**
+
+1. `cd frontend && npm install && npm run dev`
+2. Open **http://localhost:5173** — Vite + React starter page
+3. Optional: `npm run build` then `npm run preview` to test production output
+
+**When backend and database are added:**
+
 1. **Start PostgreSQL** (native or `docker compose up -d postgres`).
 2. **Backend:** `cd backend && mvn spring-boot:run` → API at `http://localhost:8080`.
-3. **Frontend:** `cd frontend && npm install && npm run dev` → UI at `http://localhost:5173`.
+3. **Frontend:** `cd frontend && npm run dev` → UI at `http://localhost:5173`.
 4. **Smoke test:**
    - `curl http://localhost:8080/api/projects`
    - Open the React app; confirm projects load via dataservices.
@@ -718,3 +786,5 @@ flowchart LR
 ```
 
 For implementation order: database migrations → backend entities and REST → frontend dataservices → webservices UI.
+
+**Progress:** Frontend starter and `dataservices` foundation are in place. Next: scaffold `backend/`, apply Flyway schema, add `dataservices/api/*` modules, then portfolio pages under `webservices/pages/`.
