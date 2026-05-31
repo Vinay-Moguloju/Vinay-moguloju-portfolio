@@ -44,16 +44,20 @@ Vinay-moguloju-portfolio/
 ```bash
 cd frontend
 npm install
+npm run setup:host   # one-time: maps localhost.vinaykumar-portfolio.com → 127.0.0.1
 npm run dev
 ```
 
-Open **http://localhost:5173** — default **Vite + React** page (logos, counter, documentation links).
+Open **http://localhost.vinaykumar-portfolio.com:5173/** — blank white starter page (portfolio content to be added).
+
+If the custom URL is not set up yet, `npm run dev` prints instructions. You can also use **http://127.0.0.1:5173/** as a fallback.
 
 ### npm scripts
 
 | Script | Description |
 |--------|-------------|
-| `npm run dev` | Dev server at http://localhost:5173 |
+| `npm run setup:host` | One-time `/etc/hosts` entry for the dev URL |
+| `npm run dev` | Dev server at http://localhost.vinaykumar-portfolio.com:5173 |
 | `npm run build` | Type-check + production build to `dist/` |
 | `npm run preview` | Preview production build |
 | `npm run lint` | ESLint |

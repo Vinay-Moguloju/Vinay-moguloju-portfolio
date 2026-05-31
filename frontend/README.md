@@ -18,7 +18,8 @@ See [../docs/PROJECT_STRUCTURE.md](../docs/PROJECT_STRUCTURE.md) for the full fi
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173
+npm run setup:host   # one-time (password required)
+npm run dev          # http://localhost.vinaykumar-portfolio.com:5173
 npm run build
 npm run lint
 ```
