@@ -1,3 +1,3 @@
 export { usePortfolioContactForm } from './usePortfolioContactForm'
-export { usePortfolioHeroParticleCanvas } from './usePortfolioHeroParticleCanvas'
+export { usePortfolioLandingPageParticleCanvas } from './usePortfolioLandingPageParticleCanvas'
 export { scrollToPortfolioSectionById, usePortfolioNavInteractions } from './usePortfolioNavInteractions'

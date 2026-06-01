@@ -33,7 +33,7 @@ export const PORTFOLIO_NAV_CONTENT = {
   ],
 } as const
 
-export const PORTFOLIO_HERO_CONTENT = {
+export const PORTFOLIO_LANDING_PAGE_CONTENT = {
   availabilityBadge: 'Available for projects',
   headlineAccent: 'Builds Things',
   headlineMuted: 'That Matter.',

@@ -1,7 +1,7 @@
 import {
   PortfolioAboutPage,
   PortfolioContactPage,
-  PortfolioHero,
+  PortfolioLandingPage,
   PortfolioNav,
   PortfolioSkillsPage,
   PortfolioWorkPage,
@@ -35,7 +35,7 @@ export function HomePage() {
   return (
     <main aria-label={PORTFOLIO_ACCESSIBILITY_LABELS.home} className="portfolio-page">
       <PortfolioNav />
-      <PortfolioHero />
+      <PortfolioLandingPage />
       <PortfolioSectionDivider />
       <PortfolioAboutPage />
       <PortfolioSectionDivider />

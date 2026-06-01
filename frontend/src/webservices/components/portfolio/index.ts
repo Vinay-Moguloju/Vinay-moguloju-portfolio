@@ -1,4 +1,4 @@
-export { PortfolioHero } from './PortfolioHero'
+export { PortfolioLandingPage } from './portfolio-landing-page'
 export { PortfolioNav } from './PortfolioNav'
 export { PortfolioAboutPage } from './portfolio-about-page'
 export { PortfolioWorkPage } from './portfolio-work-page'
