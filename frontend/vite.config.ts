@@ -11,8 +11,12 @@ const devHost = 'localhost.vinaykumar-portfolio.com'
 const devPort = 5173
 const devUrl = `http://${devHost}:${devPort}/`
 
+// GitHub project Pages URL: https://vinay-moguloju.github.io/Vinay-moguloju-portfolio/
+const githubPagesBasePath = '/Vinay-moguloju-portfolio/'
+
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? githubPagesBasePath : '/',
   plugins: [react(), tailwindcss()],
   server: {
     host: '127.0.0.1',
@@ -35,4 +39,4 @@ export default defineConfig({
       '@styles/': `${path.resolve(rootDir, 'src/styles')}/`,
     },
   },
-})
+}))
