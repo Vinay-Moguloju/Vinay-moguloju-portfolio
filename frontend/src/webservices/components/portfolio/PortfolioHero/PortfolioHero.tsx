@@ -1,10 +1,12 @@
 import { motion } from 'motion/react'
 import { ArrowDown } from 'lucide-react'
+import { getPortfolioTypographyPresetClassName } from '@dataservices/config/portfolioTypographyPresets'
+import {
+  PORTFOLIO_BRAND,
+  PORTFOLIO_HERO_CONTENT,
+} from '@dataservices/content/portfolioContent'
 import { scrollToPortfolioSectionById, usePortfolioHeroParticleCanvas } from '@/hooks'
-import './_PortfolioHero.scss'
 import { CanvasLayer, LowerPortfolioContent, RadialGlowLayer, StatusBadgeWrap } from '../../common'
-
-const portfolioHeroRoleWords = ['Full-Stack', 'Creative', 'Engineer']
 
 /**
  * @function PortfolioHero
@@ -33,7 +35,7 @@ export function PortfolioHero() {
           <StatusBadgeWrap>
             <span className="portfolio-status-badge">
               <span className="portfolio-status-dot" />
-              Available for projects
+              {PORTFOLIO_HERO_CONTENT.availabilityBadge}
             </span>
           </StatusBadgeWrap>
         </motion.div>
@@ -43,12 +45,18 @@ export function PortfolioHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.7 }}
         >
-          <h1 className="portfolio-display-heading-xl portfolio-hero__title">
-            Vinay Moguloju
+          <h1
+            className={`${getPortfolioTypographyPresetClassName('displayHeadingXl')} portfolio-hero__title`}
+          >
+            {PORTFOLIO_BRAND.displayName}
             <br />
-            <span className="portfolio-text-accent">Builds Things</span>
+            <span className={getPortfolioTypographyPresetClassName('textAccent')}>
+              {PORTFOLIO_HERO_CONTENT.headlineAccent}
+            </span>
             <br />
-            <span className="portfolio-text-muted-soft">That Matter.</span>
+            <span className={getPortfolioTypographyPresetClassName('textMutedSoft')}>
+              {PORTFOLIO_HERO_CONTENT.headlineMuted}
+            </span>
           </h1>
         </motion.div>
 
@@ -58,23 +66,24 @@ export function PortfolioHero() {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="portfolio-hero__copy-row"
         >
-          <p className="portfolio-text-body-lg portfolio-hero__intro">
-            I craft high-performance web experiences at the intersection of elegant code and
-            thoughtful design. Focused on shipping products people love.
+          <p
+            className={`${getPortfolioTypographyPresetClassName('bodyLg')} portfolio-hero__intro`}
+          >
+            {PORTFOLIO_HERO_CONTENT.intro}
           </p>
 
           <div className="portfolio-hero__role-list">
-            {portfolioHeroRoleWords.map((word, wordIndex) => (
+            {PORTFOLIO_HERO_CONTENT.roleWords.map((word, wordIndex) => (
               <span
                 key={word}
                 className={
                   wordIndex === 0
-                    ? 'portfolio-text-mono-role portfolio-text-mono-role--primary'
-                    : 'portfolio-text-mono-role'
+                    ? getPortfolioTypographyPresetClassName('monoRolePrimary')
+                    : getPortfolioTypographyPresetClassName('monoRole')
                 }
               >
                 {word}
-                {wordIndex < portfolioHeroRoleWords.length - 1 && (
+                {wordIndex < PORTFOLIO_HERO_CONTENT.roleWords.length - 1 && (
                   <span className="portfolio-text-mono-separator">·</span>
                 )}
               </span>
@@ -93,14 +102,14 @@ export function PortfolioHero() {
             onClick={() => scrollToPortfolioSectionById('work')}
             className="portfolio-button portfolio-button--primary"
           >
-            View my work
+            {PORTFOLIO_HERO_CONTENT.primaryActionLabel}
           </button>
           <button
             type="button"
             onClick={() => scrollToPortfolioSectionById('contact')}
             className="portfolio-button portfolio-button--secondary"
           >
-            Get in touch
+            {PORTFOLIO_HERO_CONTENT.secondaryActionLabel}
           </button>
         </motion.div>
       </LowerPortfolioContent>

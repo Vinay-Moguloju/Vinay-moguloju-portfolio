@@ -1,69 +1,18 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
-import './_PortfolioSkills.scss'
-
-const portfolioSkillCategories = [
-  {
-    name: 'Frontend',
-    skills: [
-      { level: 95, name: 'React / Next.js' },
-      { level: 92, name: 'TypeScript' },
-      { level: 90, name: 'CSS / Tailwind' },
-      { level: 85, name: 'Animation / Motion' },
-    ],
-  },
-  {
-    name: 'Backend',
-    skills: [
-      { level: 90, name: 'Node.js / Spring Boot' },
-      { level: 88, name: 'PostgreSQL' },
-      { level: 83, name: 'REST APIs' },
-      { level: 80, name: 'Redis / Caching' },
-    ],
-  },
-  {
-    name: 'DevOps & Tools',
-    skills: [
-      { level: 78, name: 'Docker / K8s' },
-      { level: 85, name: 'CI/CD (GitHub Actions)' },
-      { level: 82, name: 'AWS / Vercel' },
-      { level: 75, name: 'Observability' },
-    ],
-  },
-]
-
-const portfolioSkillTools = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'Node.js',
-  'Spring Boot',
-  'PostgreSQL',
-  'Redis',
-  'REST',
-  'Prisma',
-  'Docker',
-  'Kubernetes',
-  'AWS',
-  'Vercel',
-  'Figma',
-  'Git',
-  'Storybook',
-  'Vitest',
-  'Playwright',
-  'WebSockets',
-]
+import { getPortfolioTypographyPresetClassName } from '@dataservices/config/portfolioTypographyPresets'
+import { PORTFOLIO_SKILLS_CONTENT } from '@dataservices/content/portfolioContent'
 
 /**
- * @function PortfolioSkills
- * @memberof webservices/components/portfolio/PortfolioSkills
+ * @function PortfolioSkillsPage
+ * @memberof webservices/components/portfolio/portfolio-skills-page
  * @description Renders the portfolio skills section with progress bars and tool tags.
  * @returns {JSX.Element}
  *
  * @example
- * <PortfolioSkills />
+ * <PortfolioSkillsPage />
  */
-export function PortfolioSkills() {
+export function PortfolioSkillsPage() {
   const portfolioSkillsSectionRef = useRef(null)
   const isPortfolioSkillsInView = useInView(portfolioSkillsSectionRef, {
     margin: '-80px',
@@ -79,20 +28,22 @@ export function PortfolioSkills() {
           transition={{ duration: 0.5 }}
           className="portfolio-skills__header"
         >
-          <span className="portfolio-section-label">03 / Skills</span>
+          <span className={getPortfolioTypographyPresetClassName('sectionLabel')}>
+            {PORTFOLIO_SKILLS_CONTENT.sectionLabel}
+          </span>
         </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isPortfolioSkillsInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1, duration: 0.6 }}
-          className="portfolio-section-heading"
+          className={getPortfolioTypographyPresetClassName('sectionHeading')}
         >
-          What I work with
+          {PORTFOLIO_SKILLS_CONTENT.heading}
         </motion.h2>
 
         <div className="portfolio-skills__grid">
-          {portfolioSkillCategories.map((category, categoryIndex) => (
+          {PORTFOLIO_SKILLS_CONTENT.categories.map((category, categoryIndex) => (
             <motion.div
               key={category.name}
               initial={{ opacity: 0, y: 30 }}
@@ -100,13 +51,19 @@ export function PortfolioSkills() {
               transition={{ delay: 0.15 + categoryIndex * 0.1, duration: 0.6 }}
               className="portfolio-skill-card"
             >
-              <h3 className="portfolio-skill-category-title">{category.name}</h3>
+              <h3 className={getPortfolioTypographyPresetClassName('skillCategoryTitle')}>
+                {category.name}
+              </h3>
               <div className="portfolio-skill-bar-list">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name}>
                     <div className="portfolio-skill-bar-header">
-                      <span className="portfolio-skill-name">{skill.name}</span>
-                      <span className="portfolio-skill-percent">{skill.level}%</span>
+                      <span className={getPortfolioTypographyPresetClassName('skillName')}>
+                        {skill.name}
+                      </span>
+                      <span className={getPortfolioTypographyPresetClassName('skillPercent')}>
+                        {skill.level}%
+                      </span>
                     </div>
                     <div className="portfolio-skill-bar-track">
                       <motion.div
@@ -134,9 +91,11 @@ export function PortfolioSkills() {
           animate={isPortfolioSkillsInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          <p className="portfolio-comment-label">// Full stack</p>
+          <p className={getPortfolioTypographyPresetClassName('commentLabel')}>
+            {PORTFOLIO_SKILLS_CONTENT.commentLabel}
+          </p>
           <div className="portfolio-tag-list">
-            {portfolioSkillTools.map((tool, toolIndex) => (
+            {PORTFOLIO_SKILLS_CONTENT.tools.map((tool, toolIndex) => (
               <motion.span
                 key={tool}
                 initial={{ opacity: 0, scale: 0.8 }}

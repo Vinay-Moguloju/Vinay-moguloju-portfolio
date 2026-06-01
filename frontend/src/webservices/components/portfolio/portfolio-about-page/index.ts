@@ -1,0 +1,1 @@
+export { PortfolioAboutPage } from './PortfolioAboutPage'

@@ -3,10 +3,17 @@
  * @description Manages the animated particle canvas background for the portfolio hero section.
  */
 
+import { PORTFOLIO_PRIMARY_ACCENT_RGB } from '@dataservices/config/portfolioDesignTokens'
 import { useEffect, useRef } from 'react'
 
 const PORTFOLIO_HERO_PARTICLE_COUNT = 60
 const PORTFOLIO_HERO_PARTICLE_CONNECTION_DISTANCE = 120
+
+const buildPortfolioHeroParticleFillStyle = (alpha: number): string =>
+  `rgba(${PORTFOLIO_PRIMARY_ACCENT_RGB.r}, ${PORTFOLIO_PRIMARY_ACCENT_RGB.g}, ${PORTFOLIO_PRIMARY_ACCENT_RGB.b}, ${alpha})`
+
+const buildPortfolioHeroParticleStrokeStyle = (alpha: number): string =>
+  `rgba(${PORTFOLIO_PRIMARY_ACCENT_RGB.r}, ${PORTFOLIO_PRIMARY_ACCENT_RGB.g}, ${PORTFOLIO_PRIMARY_ACCENT_RGB.b}, ${alpha})`
 
 /**
  * @function usePortfolioHeroParticleCanvas
@@ -70,7 +77,7 @@ export function usePortfolioHeroParticleCanvas() {
 
         canvasContext.beginPath()
         canvasContext.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        canvasContext.fillStyle = `rgba(200, 255, 87, ${particle.alpha})`
+        canvasContext.fillStyle = buildPortfolioHeroParticleFillStyle(particle.alpha)
         canvasContext.fill()
       })
 
@@ -84,7 +91,9 @@ export function usePortfolioHeroParticleCanvas() {
             canvasContext.beginPath()
             canvasContext.moveTo(particles[firstIndex].x, particles[firstIndex].y)
             canvasContext.lineTo(particles[secondIndex].x, particles[secondIndex].y)
-            canvasContext.strokeStyle = `rgba(200, 255, 87, ${0.06 * (1 - distance / PORTFOLIO_HERO_PARTICLE_CONNECTION_DISTANCE)})`
+            canvasContext.strokeStyle = buildPortfolioHeroParticleStrokeStyle(
+              0.06 * (1 - distance / PORTFOLIO_HERO_PARTICLE_CONNECTION_DISTANCE),
+            )
             canvasContext.lineWidth = 0.5
             canvasContext.stroke()
           }

@@ -7,7 +7,12 @@ type UpperPortfolioNavContentLink = {
 
 type UpperPortfolioNavContentProps = {
   brandLabel: string
+  hireMeLabel: string
   isMobileMenuOpen: boolean
+  mobileMenuToggleLabels: {
+    close: string
+    open: string
+  }
   onBrandClick: () => void
   onMobileMenuToggle: () => void
   onNavigate: (sectionId: string) => void
@@ -24,7 +29,9 @@ type UpperPortfolioNavContentProps = {
  * @example
  * <UpperPortfolioNavContent
  *   brandLabel="Vinay.dev"
+ *   hireMeLabel="Hire me"
  *   isMobileMenuOpen={false}
+ *   mobileMenuToggleLabels={{ close: 'Close menu', open: 'Open menu' }}
  *   onBrandClick={() => {}}
  *   onMobileMenuToggle={() => {}}
  *   onNavigate={() => {}}
@@ -33,7 +40,9 @@ type UpperPortfolioNavContentProps = {
  */
 export function UpperPortfolioNavContent({
   brandLabel,
+  hireMeLabel,
   isMobileMenuOpen,
+  mobileMenuToggleLabels,
   onBrandClick,
   onMobileMenuToggle,
   onNavigate,
@@ -61,14 +70,18 @@ export function UpperPortfolioNavContent({
           onClick={() => onNavigate('contact')}
           className="portfolio-button portfolio-button--hire-me"
         >
-          Hire me
+          {hireMeLabel}
         </button>
       </div>
 
       <button
         type="button"
         aria-expanded={isMobileMenuOpen}
-        aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+        aria-label={
+          isMobileMenuOpen
+            ? mobileMenuToggleLabels.close
+            : mobileMenuToggleLabels.open
+        }
         className="portfolio-nav-mobile-toggle"
         onClick={onMobileMenuToggle}
       >
@@ -81,4 +94,3 @@ export function UpperPortfolioNavContent({
     </div>
   )
 }
-
