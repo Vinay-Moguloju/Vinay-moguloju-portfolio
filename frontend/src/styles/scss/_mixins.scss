@@ -1,0 +1,38 @@
+$portfolio-breakpoint-tablet: 768px;
+$portfolio-breakpoint-desktop: 1024px;
+$portfolio-container-max-width: 72rem;
+$portfolio-nav-z-index: 50;
+$portfolio-nav-mobile-menu-z-index: 40;
+
+@mixin portfolio-tablet-up {
+  @media (min-width: $portfolio-breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin portfolio-desktop-up {
+  @media (min-width: $portfolio-breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin portfolio-font-body {
+  font-family: var(--font-body);
+}
+
+@mixin portfolio-font-display {
+  font-family: var(--font-display);
+}
+
+@mixin portfolio-font-mono {
+  font-family: var(--font-mono);
+}
+
+@mixin portfolio-focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+
+  &:focus-visible {
+    outline-color: var(--ring);
+  }
+}

@@ -48,7 +48,7 @@ npm run setup:host   # one-time: maps localhost.vinaykumar-portfolio.com → 127
 npm run dev
 ```
 
-Open **http://localhost.vinaykumar-portfolio.com:5173/** — blank white starter page (portfolio content to be added).
+Open **http://localhost.vinaykumar-portfolio.com:5173/**
 
 If the custom URL is not set up yet, `npm run dev` prints instructions. You can also use **http://127.0.0.1:5173/** as a fallback.
 
@@ -67,12 +67,13 @@ If the custom URL is not set up yet, `npm run dev` prints instructions. You can 
 | Category | Path | Role |
 |----------|------|------|
 | App shell | `src/app/` | `App.tsx`, `routes.tsx` |
-| UI | `src/webservices/pages/home/` | `HomePage.tsx` + `HomePage.css` |
+| UI | `src/webservices/pages/home/` | `HomePage.tsx` — composes portfolio sections |
+| UI components | `src/webservices/components/portfolio/` | Nav, Hero, About, Projects, Skills, Contact |
 | UI assets | `src/webservices/assets/` | Logos, images |
 | API | `src/dataservices/api/` | Axios `client.ts` |
 | Config | `src/dataservices/config/` | `constants.ts` (API URL) |
 | Types | `src/dataservices/types/` | Shared DTO types |
-| Global CSS | `src/styles/global.css` | Site-wide variables |
+| Global CSS | `src/styles/index.css` | Tailwind v4, theme tokens, fonts |
 
 **Rule:** No `fetch`/Axios in `webservices/` — all HTTP calls go in `dataservices/api/`.
 
@@ -89,7 +90,7 @@ Used when the Spring Boot backend is running on port **8080**.
 ### Tech versions (installed)
 
 - React 18, Vite 5, TypeScript 5.6
-- react-router-dom 6, axios 1.7
+- react-router-dom 6, axios 1.7, Tailwind CSS 4, motion, lucide-react
 
 ## Backend (planned)
 
@@ -106,4 +107,4 @@ API base: `http://localhost:8080/api` — see [docs/ARCHITECTURE.md](docs/ARCHIT
 
 1. Scaffold Spring Boot `backend/` with Flyway migrations
 2. Add `dataservices/api/profileApi.ts`, `projectsApi.ts`, etc.
-3. Replace starter `HomePage` with portfolio pages (About, Projects, Contact)
+3. Replace placeholder portfolio copy, project data, and social links with real content

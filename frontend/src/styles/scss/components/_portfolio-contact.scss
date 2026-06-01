@@ -1,0 +1,43 @@
+@import '../_mixins.scss';
+
+.portfolio-contact {
+  padding-block: 6rem;
+  padding-inline: 1.5rem;
+
+  @include portfolio-tablet-up {
+    padding-inline: 3rem;
+  }
+
+  &__inner {
+    margin-inline: auto;
+    max-width: $portfolio-container-max-width;
+    width: 100%;
+  }
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__grid {
+    align-items: start;
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 1fr;
+
+    @include portfolio-desktop-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__intro-copy {
+    margin-bottom: 2.5rem;
+  }
+
+  &__heading {
+    margin-bottom: 1.5rem;
+  }
+
+  &__form-column {
+    position: relative;
+  }
+}

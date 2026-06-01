@@ -1,0 +1,124 @@
+@import '../_mixins.scss';
+
+.portfolio-button {
+  @include portfolio-font-body;
+  @include portfolio-focus-ring;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.portfolio-button--primary {
+  background: var(--primary);
+  border-radius: 9999px;
+  box-shadow: 0 0 32px rgba(200, 255, 87, 0.2);
+  color: var(--primary-foreground);
+  padding: 0.875rem 1.75rem;
+
+  &:hover {
+    box-shadow: 0 0 32px rgba(200, 255, 87, 0.28);
+    transform: scale(1.05);
+  }
+}
+
+.portfolio-button--secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  color: var(--foreground);
+  padding: 0.875rem 1.75rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.portfolio-button--hire-me {
+  background: var(--primary);
+  border-radius: 9999px;
+  color: var(--primary-foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.portfolio-button--form-submit {
+  align-items: center;
+  background: var(--primary);
+  border-radius: 0.75rem;
+  color: var(--primary-foreground);
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.875rem 1rem;
+  width: 100%;
+
+  &:hover {
+    opacity: 0.85;
+    transform: scale(1.01);
+  }
+}
+
+.portfolio-nav-link-button {
+  @include portfolio-focus-ring;
+  background: transparent;
+  border: 0;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--foreground);
+  }
+}
+
+.portfolio-nav-brand-button {
+  @include portfolio-font-display;
+  @include portfolio-focus-ring;
+  background: transparent;
+  border: 0;
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+.portfolio-nav-mobile-link-button {
+  @include portfolio-focus-ring;
+  background: transparent;
+  border: 0;
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 1.125rem;
+  padding-block: 0.25rem;
+  text-align: left;
+}
+
+.portfolio-nav-mobile-toggle {
+  @include portfolio-focus-ring;
+  background: transparent;
+  border: 0;
+  color: var(--foreground);
+  cursor: pointer;
+  display: block;
+  padding: 0;
+
+  @include portfolio-tablet-up {
+    display: none;
+  }
+}

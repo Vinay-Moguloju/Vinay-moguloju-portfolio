@@ -1,0 +1,2 @@
+export { LowerPortfolioContent } from './LowerPortfolioContent'
+
