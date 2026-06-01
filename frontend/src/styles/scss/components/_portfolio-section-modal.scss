@@ -1,0 +1,118 @@
+@import '../_mixins.scss';
+
+.portfolio-section-modal {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+  z-index: 100;
+}
+
+.portfolio-section-modal__backdrop {
+  backdrop-filter: blur(12px);
+  background: rgba(8, 8, 8, 0.78);
+  border: 0;
+  cursor: pointer;
+  inset: 0;
+  position: absolute;
+}
+
+.portfolio-section-modal__panel {
+  background:
+    linear-gradient(145deg, rgba(200, 255, 87, 0.08), transparent 35%),
+    rgba(17, 17, 17, 0.96);
+  border: 1px solid rgba(200, 255, 87, 0.18);
+  border-radius: calc(var(--radius) + 0.5rem);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  display: flex;
+  flex-direction: column;
+  max-height: min(88svh, 920px);
+  max-width: min(72rem, 100%);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.portfolio-section-modal__header {
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+}
+
+.portfolio-section-modal__title {
+  @include portfolio-font-mono;
+  color: var(--portfolio-color-accent-primary);
+  font-size: var(--portfolio-font-size-section-label);
+  letter-spacing: var(--portfolio-letter-spacing-mono);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.portfolio-section-modal__close-button {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  color: var(--foreground);
+  cursor: pointer;
+  display: inline-flex;
+  height: 2.5rem;
+  justify-content: center;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+  width: 2.5rem;
+
+  &:hover {
+    background: rgba(200, 255, 87, 0.08);
+    border-color: rgba(200, 255, 87, 0.35);
+    transform: scale(1.04);
+  }
+}
+
+.portfolio-section-modal__body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 1.5rem;
+
+  @include portfolio-tablet-up {
+    padding: 2rem 2.5rem 2.5rem;
+  }
+
+  .portfolio-about,
+  .portfolio-contact,
+  .portfolio-projects,
+  .portfolio-skills {
+    padding-block: 0;
+    padding-inline: 0;
+  }
+
+  .portfolio-section-header,
+  .portfolio-about__inner > .portfolio-section-header,
+  .portfolio-contact__header,
+  .portfolio-projects__header,
+  .portfolio-skills__header {
+    display: none;
+  }
+}
+
+.portfolio-page--scroll-locked,
+.portfolio-page--scroll-locked body {
+  overflow: hidden;
+}
+
+html.portfolio-scroll-locked,
+html.portfolio-scroll-locked body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}

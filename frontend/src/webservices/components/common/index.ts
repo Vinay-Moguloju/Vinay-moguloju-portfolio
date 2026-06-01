@@ -6,6 +6,7 @@ export { PortfolioLandingAvailabilityBadge } from './PortfolioLandingAvailabilit
 export { PortfolioLandingHeadline } from './PortfolioLandingHeadline'
 export { PortfolioLandingIntroRow } from './PortfolioLandingIntroRow'
 export { PortfolioMotionReveal } from './PortfolioMotionReveal'
+export { PortfolioSectionModal } from './PortfolioSectionModal'
 export { PortfolioScrollIndicator } from './PortfolioScrollIndicator'
 export { RadialGlowLayer } from './RadialGlowLayer'
 export { StatusBadgeWrap } from './StatusBadgeWrap'

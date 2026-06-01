@@ -127,10 +127,19 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    font-size: var(--font-size);
+    height: 100%;
+    overflow: hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    height: 100%;
     margin: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
   }
 
   h1,
@@ -140,10 +149,6 @@
   h5,
   h6 {
     font-family: var(--font-display);
-  }
-
-  html {
-    font-size: var(--font-size);
   }
 
   h1 {
@@ -189,8 +194,9 @@
   }
 
   #root {
-    min-height: 100svh;
     display: flex;
     flex-direction: column;
+    height: 100svh;
+    overflow: hidden;
   }
 }

@@ -2,10 +2,10 @@ import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
 import {
   ArrowUpRight,
-  AtSign,
   Briefcase,
   Code2,
   Mail,
+  Phone,
   Send,
   type LucideIcon,
 } from 'lucide-react'
@@ -24,7 +24,7 @@ const PORTFOLIO_CONTACT_SOCIAL_ICON_MAP: Record<
   email: Mail,
   github: Code2,
   linkedIn: Briefcase,
-  twitter: AtSign,
+  phone: Phone,
 }
 
 /**
@@ -97,7 +97,11 @@ export function PortfolioContactPage() {
                     transition={{ delay: 0.2 + socialIndex * 0.08, duration: 0.5 }}
                     className="portfolio-social-link"
                     rel="noreferrer"
-                    target={social.profileKey === 'email' ? undefined : '_blank'}
+                    target={
+                      social.profileKey === 'email' || social.profileKey === 'phone'
+                        ? undefined
+                        : '_blank'
+                    }
                   >
                     <div className="portfolio-social-link__content">
                       <div className="portfolio-social-link__icon-wrap">
