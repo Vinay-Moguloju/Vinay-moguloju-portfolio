@@ -1,0 +1,70 @@
+/**
+ * Portfolio design tokens — single source of truth for colors, font families, and font sizes.
+ *
+ * Usage in JSX:
+ *   className={getPortfolioTypographyPresetClassName('displayHeadingXl')}
+ *
+ * Usage in SCSS:
+ *   font-size: var(--portfolio-font-size-body);
+ *   color: var(--portfolio-color-text-muted);
+ */
+
+:root {
+  /* Font families */
+  --portfolio-font-family-body: var(--font-body);
+  --portfolio-font-family-display: var(--font-display);
+  --portfolio-font-family-mono: var(--font-mono);
+
+  /* Font sizes */
+  --portfolio-font-size-base: 1rem;
+  --portfolio-font-size-body: 1rem;
+  --portfolio-font-size-body-lg: 1.05rem;
+  --portfolio-font-size-comment: 0.875rem;
+  --portfolio-font-size-display-lg: clamp(2rem, 4vw, 3.5rem);
+  --portfolio-font-size-display-md: 1.4rem;
+  --portfolio-font-size-display-xl: clamp(3.5rem, 10vw, 9rem);
+  --portfolio-font-size-footer-brand: 1rem;
+  --portfolio-font-size-footer-meta: 0.875rem;
+  --portfolio-font-size-form-label: 0.875rem;
+  --portfolio-font-size-form-success-title: 1.5rem;
+  --portfolio-font-size-form-title: 1.3rem;
+  --portfolio-font-size-link-action: 0.875rem;
+  --portfolio-font-size-mono-role: 0.75rem;
+  --portfolio-font-size-project-copy: 0.875rem;
+  --portfolio-font-size-section-heading: clamp(2rem, 4vw, 3.5rem);
+  --portfolio-font-size-section-label: 0.75rem;
+  --portfolio-font-size-skill-category: 1.1rem;
+  --portfolio-font-size-skill-name: 0.875rem;
+  --portfolio-font-size-skill-percent: 0.75rem;
+  --portfolio-font-size-social-handle: 0.75rem;
+  --portfolio-font-size-social-label: 0.875rem;
+  --portfolio-font-size-stat-label: 0.875rem;
+  --portfolio-font-size-stat-value: 2.2rem;
+  --portfolio-font-size-status-chip: 0.875rem;
+
+  /* Font weights */
+  --portfolio-font-weight-bold: 700;
+  --portfolio-font-weight-display-xl: 800;
+  --portfolio-font-weight-medium: 500;
+  --portfolio-font-weight-stat: 800;
+
+  /* Letter spacing */
+  --portfolio-letter-spacing-mono: 0.12em;
+  --portfolio-letter-spacing-display-xl: -0.02em;
+
+  /* Line heights */
+  --portfolio-line-height-body: 1.7;
+  --portfolio-line-height-display-lg: 1.15;
+  --portfolio-line-height-display-xl: 0.9;
+  --portfolio-line-height-stat: 1;
+
+  /* Colors */
+  --portfolio-color-accent-amber: #ffb347;
+  --portfolio-color-accent-coral: #ff6b6b;
+  --portfolio-color-accent-primary: var(--primary);
+  --portfolio-color-accent-purple: #7c6aff;
+  --portfolio-color-mono-separator: rgba(255, 255, 255, 0.15);
+  --portfolio-color-text-muted: var(--muted-foreground);
+  --portfolio-color-text-muted-soft: rgba(240, 237, 230, 0.35);
+  --portfolio-color-text-primary: var(--foreground);
+}

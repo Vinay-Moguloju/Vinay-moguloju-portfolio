@@ -1,1 +1,0 @@
-export { PortfolioProjects } from './PortfolioProjects'

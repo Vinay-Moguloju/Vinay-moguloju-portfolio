@@ -1,2 +1,0 @@
-export { PortfolioAbout } from '../PortfolioAbout'
-

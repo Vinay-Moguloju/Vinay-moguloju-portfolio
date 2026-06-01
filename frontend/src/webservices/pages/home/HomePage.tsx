@@ -1,11 +1,12 @@
 import {
-  PortfolioAbout,
-  PortfolioContact,
+  PortfolioAboutPage,
+  PortfolioContactPage,
   PortfolioHero,
   PortfolioNav,
-  PortfolioProjects,
-  PortfolioSkills,
+  PortfolioSkillsPage,
+  PortfolioWorkPage,
 } from '@webservices/components/portfolio'
+import { PORTFOLIO_ACCESSIBILITY_LABELS } from '@dataservices/content/portfolioContent'
 
 /**
  * @function PortfolioSectionDivider
@@ -32,17 +33,17 @@ function PortfolioSectionDivider() {
  */
 export function HomePage() {
   return (
-    <main aria-label="Home" className="portfolio-page">
+    <main aria-label={PORTFOLIO_ACCESSIBILITY_LABELS.home} className="portfolio-page">
       <PortfolioNav />
       <PortfolioHero />
       <PortfolioSectionDivider />
-      <PortfolioAbout />
+      <PortfolioAboutPage />
       <PortfolioSectionDivider />
-      <PortfolioProjects />
+      <PortfolioWorkPage />
       <PortfolioSectionDivider />
-      <PortfolioSkills />
+      <PortfolioSkillsPage />
       <PortfolioSectionDivider />
-      <PortfolioContact />
+      <PortfolioContactPage />
     </main>
   )
 }

@@ -1,17 +1,11 @@
 import { AnimatePresence, motion } from 'motion/react'
+import {
+  PORTFOLIO_ACCESSIBILITY_LABELS,
+  PORTFOLIO_BRAND,
+  PORTFOLIO_NAV_CONTENT,
+} from '@dataservices/content/portfolioContent'
 import { usePortfolioNavInteractions } from '@/hooks/usePortfolioNavInteractions'
-import './_PortfolioNav.scss'
 import { UpperPortfolioNavContent } from '../UpperPortfolioNavContent'
-
-const PORTFOLIO_NAV_BRAND_LABEL = 'Vinay Kumar Moguloju'
-const PORTFOLIO_NAV_HIRE_ME_LABEL = 'Hire me'
-
-const portfolioNavSectionLinks = [
-  { label: 'About', sectionId: 'about' },
-  { label: 'Work', sectionId: 'work' },
-  { label: 'Skills', sectionId: 'skills' },
-  { label: 'Contact', sectionId: 'contact' },
-] as const
 
 /**
  * @function PortfolioNav
@@ -37,14 +31,19 @@ export function PortfolioNav() {
 
   return (
     <>
-      <nav aria-label="Portfolio" className={portfolioNavRootClassName}>
+      <nav aria-label={PORTFOLIO_ACCESSIBILITY_LABELS.nav} className={portfolioNavRootClassName}>
         <UpperPortfolioNavContent
-          brandLabel={PORTFOLIO_NAV_BRAND_LABEL}
+          brandLabel={PORTFOLIO_BRAND.fullName}
+          hireMeLabel={PORTFOLIO_NAV_CONTENT.hireMeLabel}
           isMobileMenuOpen={isPortfolioMobileMenuOpen}
+          mobileMenuToggleLabels={{
+            close: PORTFOLIO_ACCESSIBILITY_LABELS.mobileMenuClose,
+            open: PORTFOLIO_ACCESSIBILITY_LABELS.mobileMenuOpen,
+          }}
           onBrandClick={openPortfolioHomeSection}
           onMobileMenuToggle={togglePortfolioMobileMenu}
           onNavigate={scrollToPortfolioNavSection}
-          sectionLinks={portfolioNavSectionLinks}
+          sectionLinks={PORTFOLIO_NAV_CONTENT.sectionLinks}
         />
       </nav>
 
@@ -57,7 +56,7 @@ export function PortfolioNav() {
             transition={{ duration: 0.2 }}
             className="portfolio-nav__mobile-menu"
           >
-            {portfolioNavSectionLinks.map((link) => (
+            {PORTFOLIO_NAV_CONTENT.sectionLinks.map((link) => (
               <button
                 key={link.sectionId}
                 type="button"
@@ -72,7 +71,7 @@ export function PortfolioNav() {
               onClick={() => scrollToPortfolioNavSection('contact')}
               className="portfolio-button portfolio-button--hire-me portfolio-nav__mobile-hire-me"
             >
-              {PORTFOLIO_NAV_HIRE_ME_LABEL}
+              {PORTFOLIO_NAV_CONTENT.hireMeLabel}
             </button>
           </motion.div>
         )}
