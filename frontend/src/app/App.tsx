@@ -3,7 +3,7 @@ import { appRoutes } from './routes'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         {appRoutes.map(({ path, element }) => (
           <Route key={path} path={path} element={element} />
