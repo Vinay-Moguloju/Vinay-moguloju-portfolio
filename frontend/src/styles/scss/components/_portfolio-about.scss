@@ -1,0 +1,92 @@
+@import '../_mixins.scss';
+
+.portfolio-about {
+  padding-block: 6rem;
+  padding-inline: 1.5rem;
+
+  @include portfolio-tablet-up {
+    padding-inline: 3rem;
+  }
+
+  &__inner {
+    margin-inline: auto;
+    max-width: $portfolio-container-max-width;
+    width: 100%;
+  }
+
+  &__grid {
+    align-items: start;
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 1fr;
+
+    @include portfolio-desktop-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__heading {
+    margin-bottom: 1.5rem;
+  }
+
+  &__paragraph + &__paragraph {
+    margin-top: 1.25rem;
+  }
+
+  &__paragraphs {
+    margin-bottom: 2rem;
+  }
+
+  &__stats {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  &__media {
+    position: relative;
+  }
+
+  &__image-wrap {
+    background: var(--card);
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__image {
+    height: 20rem;
+    object-fit: cover;
+    opacity: 0.8;
+    width: 100%;
+
+    @include portfolio-desktop-up {
+      height: 30rem;
+    }
+  }
+
+  &__image-overlay {
+    background: linear-gradient(to top, rgba(8, 8, 8, 0.7) 0%, transparent 60%);
+    inset: 0;
+    position: absolute;
+  }
+
+  &__status-wrap {
+    bottom: 1.5rem;
+    left: 1.5rem;
+    position: absolute;
+    right: 1.5rem;
+  }
+
+  &__accent {
+    background: rgba(200, 255, 87, 0.12);
+    border: 1px solid rgba(200, 255, 87, 0.2);
+    border-radius: 0.75rem;
+    height: 6rem;
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+    width: 6rem;
+    z-index: -1;
+  }
+}

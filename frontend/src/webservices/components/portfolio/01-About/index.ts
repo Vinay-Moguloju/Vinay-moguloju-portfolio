@@ -1,0 +1,2 @@
+export { PortfolioAbout } from '../PortfolioAbout'
+

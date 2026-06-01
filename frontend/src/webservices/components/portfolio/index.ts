@@ -1,0 +1,6 @@
+export { PortfolioHero } from './PortfolioHero'
+export { PortfolioNav } from './PortfolioNav'
+export { PortfolioAbout } from './01-About'
+export { PortfolioProjects } from './02-Work'
+export { PortfolioSkills } from './03-Skills'
+export { PortfolioContact } from './04-Contact'

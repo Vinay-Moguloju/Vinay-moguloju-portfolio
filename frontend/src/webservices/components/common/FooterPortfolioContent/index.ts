@@ -1,0 +1,2 @@
+export { FooterPortfolioContent } from './FooterPortfolioContent'
+

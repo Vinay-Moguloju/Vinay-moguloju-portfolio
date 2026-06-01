@@ -1,0 +1,243 @@
+@import '../_mixins.scss';
+
+.portfolio-section-label {
+  @include portfolio-font-mono;
+  color: var(--primary);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.portfolio-section-heading {
+  @include portfolio-font-display;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 4rem;
+}
+
+.portfolio-display-heading-xl {
+  @include portfolio-font-display;
+  color: var(--foreground);
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.portfolio-display-heading-lg {
+  @include portfolio-font-display;
+  color: var(--foreground);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.portfolio-display-heading-md {
+  @include portfolio-font-display;
+  color: var(--foreground);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.portfolio-text-accent {
+  color: var(--primary);
+}
+
+.portfolio-text-muted-soft {
+  color: rgba(240, 237, 230, 0.35);
+}
+
+.portfolio-text-body {
+  @include portfolio-font-body;
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.portfolio-text-body-lg {
+  @include portfolio-font-body;
+  color: var(--muted-foreground);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.portfolio-text-mono-role {
+  @include portfolio-font-mono;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  &--primary {
+    color: var(--primary);
+  }
+}
+
+.portfolio-text-mono-separator {
+  color: rgba(255, 255, 255, 0.15);
+  margin-inline: 0.75rem;
+}
+
+.portfolio-stat-value {
+  @include portfolio-font-display;
+  color: var(--primary);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.portfolio-stat-label {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.portfolio-form-title {
+  @include portfolio-font-display;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.scroll-label,
+.portfolio-scroll-label {
+  @include portfolio-font-mono;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.portfolio-form-label {
+  color: var(--muted-foreground);
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-footer-brand {
+  @include portfolio-font-display;
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.portfolio-footer-meta {
+  @include portfolio-font-mono;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+.portfolio-scroll-label {
+  @include portfolio-font-mono;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.portfolio-comment-label {
+  @include portfolio-font-mono;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-skill-category-title {
+  @include portfolio-font-display;
+  color: var(--foreground);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-skill-name {
+  @include portfolio-font-body;
+  color: var(--foreground);
+  font-size: 0.875rem;
+}
+
+.portfolio-skill-percent {
+  @include portfolio-font-mono;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+
+.portfolio-social-label {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.portfolio-social-handle {
+  @include portfolio-font-mono;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+
+.portfolio-project-tagline {
+  color: var(--portfolio-project-accent, var(--primary));
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-project-description {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-link-action {
+  align-items: center;
+  color: var(--muted-foreground);
+  display: inline-flex;
+  font-size: 0.875rem;
+  gap: 0.375rem;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &--accent {
+    color: var(--portfolio-project-accent, var(--primary));
+    font-weight: 500;
+    transition: gap 0.2s ease;
+
+    &:hover {
+      gap: 0.625rem;
+      opacity: 1;
+    }
+  }
+}
+
+.portfolio-status-chip-text {
+  @include portfolio-font-mono;
+  color: var(--foreground);
+  font-size: 0.875rem;
+}
+
+.portfolio-form-success-title {
+  @include portfolio-font-display;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.portfolio-form-success-copy {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.portfolio-icon-muted {
+  color: var(--muted-foreground);
+}
+
+.portfolio-icon-primary {
+  color: var(--primary);
+}
+
+.portfolio-icon-current {
+  color: currentColor;
+}

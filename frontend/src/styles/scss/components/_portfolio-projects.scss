@@ -1,0 +1,124 @@
+@import '../_mixins.scss';
+
+.portfolio-projects {
+  padding-block: 6rem;
+  padding-inline: 1.5rem;
+
+  @include portfolio-tablet-up {
+    padding-inline: 3rem;
+  }
+
+  &__inner {
+    margin-inline: auto;
+    max-width: $portfolio-container-max-width;
+    width: 100%;
+  }
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+
+    @include portfolio-tablet-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+.portfolio-project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &--active,
+  &:hover {
+    border-color: color-mix(in srgb, var(--portfolio-project-accent, var(--primary)) 19%, transparent);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--portfolio-project-accent, var(--primary)) 7%, transparent);
+  }
+
+  &__media {
+    height: 13rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+    width: 100%;
+  }
+
+  &:hover &__image {
+    transform: scale(1.05);
+  }
+
+  &__overlay {
+    background: linear-gradient(to bottom, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.6));
+    inset: 0;
+    position: absolute;
+  }
+
+  &__badges {
+    display: flex;
+    gap: 0.5rem;
+    left: 1rem;
+    position: absolute;
+    top: 1rem;
+  }
+
+  &__category-badge {
+    @include portfolio-font-mono;
+    background: rgba(8, 8, 8, 0.7);
+    border: 1px solid color-mix(in srgb, var(--portfolio-project-accent, var(--primary)) 25%, transparent);
+    border-radius: 9999px;
+    color: var(--portfolio-project-accent, var(--primary));
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.625rem;
+  }
+
+  &__year-badge {
+    @include portfolio-font-mono;
+    background: rgba(8, 8, 8, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+  }
+
+  &__body {
+    padding: 1.5rem;
+  }
+
+  &__title {
+    margin-bottom: 0.25rem;
+  }
+
+  &__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  &__actions {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__links {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+  }
+}
