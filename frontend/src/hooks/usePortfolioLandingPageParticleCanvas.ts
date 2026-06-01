@@ -1,34 +1,34 @@
 /**
- * @module hooks/usePortfolioHeroParticleCanvas
- * @description Manages the animated particle canvas background for the portfolio hero section.
+ * @module hooks/usePortfolioLandingPageParticleCanvas
+ * @description Manages the animated particle canvas background for the portfolio landing page.
  */
 
 import { PORTFOLIO_PRIMARY_ACCENT_RGB } from '@dataservices/config/portfolioDesignTokens'
 import { useEffect, useRef } from 'react'
 
-const PORTFOLIO_HERO_PARTICLE_COUNT = 60
-const PORTFOLIO_HERO_PARTICLE_CONNECTION_DISTANCE = 120
+const PORTFOLIO_LANDING_PAGE_PARTICLE_COUNT = 60
+const PORTFOLIO_LANDING_PAGE_PARTICLE_CONNECTION_DISTANCE = 120
 
-const buildPortfolioHeroParticleFillStyle = (alpha: number): string =>
+const buildPortfolioLandingPageParticleFillStyle = (alpha: number): string =>
   `rgba(${PORTFOLIO_PRIMARY_ACCENT_RGB.r}, ${PORTFOLIO_PRIMARY_ACCENT_RGB.g}, ${PORTFOLIO_PRIMARY_ACCENT_RGB.b}, ${alpha})`
 
-const buildPortfolioHeroParticleStrokeStyle = (alpha: number): string =>
+const buildPortfolioLandingPageParticleStrokeStyle = (alpha: number): string =>
   `rgba(${PORTFOLIO_PRIMARY_ACCENT_RGB.r}, ${PORTFOLIO_PRIMARY_ACCENT_RGB.g}, ${PORTFOLIO_PRIMARY_ACCENT_RGB.b}, ${alpha})`
 
 /**
- * @function usePortfolioHeroParticleCanvas
- * @memberof hooks/usePortfolioHeroParticleCanvas
- * @description Binds a canvas ref and renders animated portfolio hero particles on mount.
- * @returns {{ portfolioHeroCanvasRef: React.RefObject<HTMLCanvasElement | null> }}
+ * @function usePortfolioLandingPageParticleCanvas
+ * @memberof hooks/usePortfolioLandingPageParticleCanvas
+ * @description Binds a canvas ref and renders animated portfolio landing page particles on mount.
+ * @returns {{ portfolioLandingPageCanvasRef: React.RefObject<HTMLCanvasElement | null> }}
  *
  * @example
- * const { portfolioHeroCanvasRef } = usePortfolioHeroParticleCanvas()
+ * const { portfolioLandingPageCanvasRef } = usePortfolioLandingPageParticleCanvas()
  */
-export function usePortfolioHeroParticleCanvas() {
-  const portfolioHeroCanvasRef = useRef<HTMLCanvasElement>(null)
+export function usePortfolioLandingPageParticleCanvas() {
+  const portfolioLandingPageCanvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    const canvas = portfolioHeroCanvasRef.current
+    const canvas = portfolioLandingPageCanvasRef.current
     if (!canvas) return
 
     const canvasContext = canvas.getContext('2d')
@@ -44,15 +44,15 @@ export function usePortfolioHeroParticleCanvas() {
       y: number
     }[] = []
 
-    const resizePortfolioHeroCanvas = () => {
+    const resizePortfolioLandingPageCanvas = () => {
       canvas.width = canvas.offsetWidth
       canvas.height = canvas.offsetHeight
     }
 
-    resizePortfolioHeroCanvas()
-    window.addEventListener('resize', resizePortfolioHeroCanvas)
+    resizePortfolioLandingPageCanvas()
+    window.addEventListener('resize', resizePortfolioLandingPageCanvas)
 
-    for (let index = 0; index < PORTFOLIO_HERO_PARTICLE_COUNT; index += 1) {
+    for (let index = 0; index < PORTFOLIO_LANDING_PAGE_PARTICLE_COUNT; index += 1) {
       particles.push({
         alpha: Math.random() * 0.4 + 0.1,
         size: Math.random() * 2 + 0.5,
@@ -63,7 +63,7 @@ export function usePortfolioHeroParticleCanvas() {
       })
     }
 
-    const drawPortfolioHeroParticles = () => {
+    const drawPortfolioLandingPageParticles = () => {
       canvasContext.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach((particle) => {
@@ -77,7 +77,7 @@ export function usePortfolioHeroParticleCanvas() {
 
         canvasContext.beginPath()
         canvasContext.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        canvasContext.fillStyle = buildPortfolioHeroParticleFillStyle(particle.alpha)
+        canvasContext.fillStyle = buildPortfolioLandingPageParticleFillStyle(particle.alpha)
         canvasContext.fill()
       })
 
@@ -87,12 +87,12 @@ export function usePortfolioHeroParticleCanvas() {
           const deltaY = particles[firstIndex].y - particles[secondIndex].y
           const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
 
-          if (distance < PORTFOLIO_HERO_PARTICLE_CONNECTION_DISTANCE) {
+          if (distance < PORTFOLIO_LANDING_PAGE_PARTICLE_CONNECTION_DISTANCE) {
             canvasContext.beginPath()
             canvasContext.moveTo(particles[firstIndex].x, particles[firstIndex].y)
             canvasContext.lineTo(particles[secondIndex].x, particles[secondIndex].y)
-            canvasContext.strokeStyle = buildPortfolioHeroParticleStrokeStyle(
-              0.06 * (1 - distance / PORTFOLIO_HERO_PARTICLE_CONNECTION_DISTANCE),
+            canvasContext.strokeStyle = buildPortfolioLandingPageParticleStrokeStyle(
+              0.06 * (1 - distance / PORTFOLIO_LANDING_PAGE_PARTICLE_CONNECTION_DISTANCE),
             )
             canvasContext.lineWidth = 0.5
             canvasContext.stroke()
@@ -100,16 +100,16 @@ export function usePortfolioHeroParticleCanvas() {
         }
       }
 
-      animationFrameId = requestAnimationFrame(drawPortfolioHeroParticles)
+      animationFrameId = requestAnimationFrame(drawPortfolioLandingPageParticles)
     }
 
-    drawPortfolioHeroParticles()
+    drawPortfolioLandingPageParticles()
 
     return () => {
       cancelAnimationFrame(animationFrameId)
-      window.removeEventListener('resize', resizePortfolioHeroCanvas)
+      window.removeEventListener('resize', resizePortfolioLandingPageCanvas)
     }
   }, [])
 
-  return { portfolioHeroCanvasRef }
+  return { portfolioLandingPageCanvasRef }
 }
