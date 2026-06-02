@@ -16,20 +16,20 @@ export const PORTFOLIO_API_BASE_URL =
 /** Remote and local media URLs referenced by portfolio sections. */
 export const PORTFOLIO_MEDIA_URLS = {
   aboutWorkspace: portfolioAboutWorkspaceImage,
-  projectFluxDb:
+  projectAiChatbot:
     'https://images.unsplash.com/photo-1675334758735-5f989ff8237f?w=800&h=500&fit=crop&auto=format',
-  projectMeridian:
-    'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&h=500&fit=crop&auto=format',
-  projectNomadAtlas:
-    'https://images.unsplash.com/photo-1549317336-206569e8475c?w=800&h=500&fit=crop&auto=format',
-  projectSpectraUi:
+  projectAssociateDiscount:
     'https://images.unsplash.com/photo-1650661926447-9efb2610f64c?w=800&h=500&fit=crop&auto=format',
+  projectCustomerMfe:
+    'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&h=500&fit=crop&auto=format',
+  projectVerizonPos:
+    'https://images.unsplash.com/photo-1549317336-206569e8475c?w=800&h=500&fit=crop&auto=format',
 } as const
 
 /** External profile and contact URLs for portfolio social links. */
 export const PORTFOLIO_SOCIAL_PROFILE_URLS = {
-  email: 'mailto:hello@vinaykumar-portfolio.com',
-  github: 'https://github.com/vinaymoguloju',
-  linkedIn: 'https://www.linkedin.com/in/vinaymoguloju',
-  twitter: 'https://twitter.com/vinaymoguloju',
+  email: 'mailto:mogulojuvinaykumar@gmail.com',
+  github: 'https://github.com/dashboard',
+  linkedIn: 'https://www.linkedin.com/in/vinay-kumar-moguloju-033267192',
+  phone: 'tel:+15712958383',
 } as const

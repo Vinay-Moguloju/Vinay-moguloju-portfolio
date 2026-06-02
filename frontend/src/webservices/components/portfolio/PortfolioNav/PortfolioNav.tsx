@@ -19,19 +19,17 @@ import { UpperPortfolioNavContent } from '../UpperPortfolioNavContent'
 export function PortfolioNav() {
   const {
     isPortfolioMobileMenuOpen,
-    isPortfolioNavScrolled,
     openPortfolioHomeSection,
-    scrollToPortfolioNavSection,
+    openPortfolioNavSectionModal,
     togglePortfolioMobileMenu,
   } = usePortfolioNavInteractions()
 
-  const portfolioNavRootClassName = isPortfolioNavScrolled
-    ? 'portfolio-nav portfolio-nav--scrolled'
-    : 'portfolio-nav portfolio-nav--top'
-
   return (
     <>
-      <nav aria-label={PORTFOLIO_ACCESSIBILITY_LABELS.nav} className={portfolioNavRootClassName}>
+      <nav
+        aria-label={PORTFOLIO_ACCESSIBILITY_LABELS.nav}
+        className="portfolio-nav portfolio-nav--top"
+      >
         <UpperPortfolioNavContent
           brandLabel={PORTFOLIO_BRAND.fullName}
           hireMeLabel={PORTFOLIO_NAV_CONTENT.hireMeLabel}
@@ -42,7 +40,7 @@ export function PortfolioNav() {
           }}
           onBrandClick={openPortfolioHomeSection}
           onMobileMenuToggle={togglePortfolioMobileMenu}
-          onNavigate={scrollToPortfolioNavSection}
+          onNavigate={openPortfolioNavSectionModal}
           sectionLinks={PORTFOLIO_NAV_CONTENT.sectionLinks}
         />
       </nav>
@@ -60,7 +58,7 @@ export function PortfolioNav() {
               <button
                 key={link.sectionId}
                 type="button"
-                onClick={() => scrollToPortfolioNavSection(link.sectionId)}
+                onClick={() => openPortfolioNavSectionModal(link.sectionId)}
                 className="portfolio-nav-mobile-link-button"
               >
                 {link.label}
@@ -68,7 +66,7 @@ export function PortfolioNav() {
             ))}
             <button
               type="button"
-              onClick={() => scrollToPortfolioNavSection('contact')}
+              onClick={() => openPortfolioNavSectionModal('contact')}
               className="portfolio-button portfolio-button--hire-me portfolio-nav__mobile-hire-me"
             >
               {PORTFOLIO_NAV_CONTENT.hireMeLabel}

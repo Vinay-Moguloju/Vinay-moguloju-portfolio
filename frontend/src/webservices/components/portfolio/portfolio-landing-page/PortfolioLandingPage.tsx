@@ -2,10 +2,8 @@ import {
   PORTFOLIO_BRAND,
   PORTFOLIO_LANDING_PAGE_CONTENT,
 } from '@dataservices/content/portfolioContent'
-import {
-  scrollToPortfolioSectionById,
-  usePortfolioLandingPageParticleCanvas,
-} from '@/hooks'
+import { usePortfolioLandingPageParticleCanvas } from '@/hooks/usePortfolioLandingPageParticleCanvas'
+import { usePortfolioSectionModal } from '@/hooks/usePortfolioSectionModal'
 import {
   CanvasLayer,
   LowerPortfolioContent,
@@ -13,7 +11,6 @@ import {
   PortfolioLandingAvailabilityBadge,
   PortfolioLandingHeadline,
   PortfolioLandingIntroRow,
-  PortfolioScrollIndicator,
   RadialGlowLayer,
 } from '../../common'
 
@@ -28,6 +25,7 @@ import {
  */
 export function PortfolioLandingPage() {
   const { portfolioLandingPageCanvasRef } = usePortfolioLandingPageParticleCanvas()
+  const { openPortfolioSectionModal } = usePortfolioSectionModal()
 
   return (
     <section className="portfolio-landing-page">
@@ -51,14 +49,12 @@ export function PortfolioLandingPage() {
           roleWords={PORTFOLIO_LANDING_PAGE_CONTENT.roleWords}
         />
         <PortfolioLandingActionRow
-          onPrimaryActionClick={() => scrollToPortfolioSectionById('work')}
-          onSecondaryActionClick={() => scrollToPortfolioSectionById('contact')}
+          onPrimaryActionClick={() => openPortfolioSectionModal('work')}
+          onSecondaryActionClick={() => openPortfolioSectionModal('contact')}
           primaryActionLabel={PORTFOLIO_LANDING_PAGE_CONTENT.primaryActionLabel}
           secondaryActionLabel={PORTFOLIO_LANDING_PAGE_CONTENT.secondaryActionLabel}
         />
       </LowerPortfolioContent>
-
-      <PortfolioScrollIndicator className="portfolio-landing-page__scroll-indicator" />
     </section>
   )
 }
