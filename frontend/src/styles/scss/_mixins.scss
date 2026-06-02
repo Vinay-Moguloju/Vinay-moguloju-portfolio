@@ -1,8 +1,9 @@
 $portfolio-breakpoint-tablet: 768px;
 $portfolio-breakpoint-desktop: 1024px;
 $portfolio-container-max-width: 72rem;
-$portfolio-nav-z-index: 50;
+$portfolio-nav-block-size: 4.5rem;
 $portfolio-nav-mobile-menu-z-index: 40;
+$portfolio-nav-z-index: 50;
 
 @mixin portfolio-tablet-up {
   @media (min-width: $portfolio-breakpoint-tablet) {

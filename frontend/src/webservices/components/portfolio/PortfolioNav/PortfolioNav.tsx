@@ -31,7 +31,7 @@ export function PortfolioNav() {
         className="portfolio-nav portfolio-nav--top"
       >
         <UpperPortfolioNavContent
-          brandLabel={PORTFOLIO_BRAND.fullName}
+          brandLabel={PORTFOLIO_BRAND.displayName}
           hireMeLabel={PORTFOLIO_NAV_CONTENT.hireMeLabel}
           isMobileMenuOpen={isPortfolioMobileMenuOpen}
           mobileMenuToggleLabels={{
