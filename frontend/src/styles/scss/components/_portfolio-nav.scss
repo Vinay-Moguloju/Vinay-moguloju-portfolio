@@ -23,14 +23,19 @@
   &__inner {
     align-items: center;
     display: flex;
+    gap: 0.75rem;
     justify-content: space-between;
     margin-inline: auto;
     max-width: $portfolio-container-max-width;
-    padding-block: 1rem;
+    min-height: $portfolio-nav-block-size;
+    padding-block: 0.75rem;
     padding-inline: 1.5rem;
     width: 100%;
 
     @include portfolio-tablet-up {
+      gap: 2rem;
+      min-height: auto;
+      padding-block: 1rem;
       padding-inline: 3rem;
     }
   }
@@ -55,7 +60,7 @@
     padding: 1.5rem;
     position: fixed;
     right: 0;
-    top: 4rem;
+    top: $portfolio-nav-block-size;
     z-index: $portfolio-nav-mobile-menu-z-index;
 
     @include portfolio-tablet-up {
