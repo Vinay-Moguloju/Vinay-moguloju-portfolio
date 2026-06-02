@@ -7,80 +7,150 @@ Personal portfolio for **Vinay Moguloju** — React UI, Spring Boot REST API, an
 | Part | Status |
 |------|--------|
 | Architecture docs | Done |
-| React frontend (`frontend/`) | Done — Vite 5 + React 18 starter running locally |
-| Java backend (`backend/`) | Not started |
-| PostgreSQL (Docker) | Done — `portfolio_nav_content`, `portfolio_landing_page_content` ([database/README.md](database/README.md)) |
-| Java backend + Flyway | Not started |
+| React frontend (`frontend/`) | Done |
+| PostgreSQL + Docker (`database/`) | Done |
+| Java backend (`backend/`) | Done — nav + landing GET APIs |
+| Frontend wired to API | Done — fetches API, falls back to `portfolioContent.ts` |
 
 ## Repository layout
 
 ```
 Vinay-moguloju-portfolio/
-├── docs/
-│   ├── ARCHITECTURE.md        # System design
-│   └── PROJECT_STRUCTURE.md   # Files by category & purpose
-├── frontend/                  # React + Vite + TypeScript
-│   └── src/
-│       ├── app/               # Router & shell
-│       ├── webservices/       # UI (pages, components, assets)
-│       ├── dataservices/      # API client & types
-│       └── styles/            # Global CSS
-├── backend/                   # (planned) Spring Boot
-├── database/                  # Per-feature SQL (nav / landing folders)
+├── backend/                   # Spring Boot REST API
+├── database/                  # Per-feature SQL (nav / landing)
 ├── docker-compose.yml         # PostgreSQL 16
+├── docs/
+├── frontend/                  # React + Vite + TypeScript
 └── README.md
 ```
 
-**File guide:** [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md) — every folder explained by category.
+**File guide:** [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)
 
-## Architecture
+---
 
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — stack, APIs, database, dependencies
-- [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md) — **every file by category and purpose**
+## Local development setup (step by step)
 
-## Frontend (React)
+Do these once, then use **Run everything daily** below.
 
-**Requirements:** Node.js **20 LTS** (or newer) and npm.
+### Step 1 — Docker Desktop
 
-### Install and run
+1. Install [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/).
+2. Open it and wait until it says **Docker is running**.
+
+### Step 2 — PostgreSQL (database + tables)
+
+```bash
+cd /Users/aishwaryachintaluru/Vinay-moguloju-portfolio
+cp .env.example .env
+./database/scripts/setup-postgres.sh
+```
+
+You should see rows from `portfolio_nav_content` and `portfolio_landing_page_content`.
+
+**Reset DB (fresh migrations):**
+
+```bash
+docker compose down -v
+./database/scripts/setup-postgres.sh
+```
+
+More detail: [database/README.md](database/README.md)
+
+### Step 3 — Homebrew on your PATH (if `brew` not found)
+
+Homebrew is often installed at `/opt/homebrew` but missing from PATH:
+
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
+source ~/.zshrc
+brew --version
+```
+
+### Step 4 — Java
+
+Check:
+
+```bash
+java -version
+```
+
+Use **Java 21** (or 17+). Oracle JDK or Homebrew OpenJDK both work.
+
+### Step 5 — Maven
+
+```bash
+brew install maven
+mvn -v
+```
+
+If `mvn` is not found, use:
+
+```bash
+/opt/homebrew/bin/mvn -v
+```
+
+### Step 6 — Run the Java API
+
+```bash
+cd backend
+export $(grep -v '^#' ../.env | xargs)
+mvn spring-boot:run
+```
+
+Test in another terminal:
+
+```bash
+curl http://localhost:8080/api/portfolio-nav-content
+curl http://localhost:8080/api/portfolio-landing-page-content
+```
+
+Backend details: [backend/README.md](backend/README.md)
+
+### Step 7 — Run the React app
 
 ```bash
 cd frontend
 npm install
-npm run setup:host   # one-time: maps localhost.vinaykumar-portfolio.com → 127.0.0.1
+npm run setup:host   # one-time: custom dev hostname
 npm run dev
 ```
 
-Open **http://localhost.vinaykumar-portfolio.com:5173/**
+Open **http://localhost.vinaykumar-portfolio.com:5173/** (or http://127.0.0.1:5173/)
 
-If the custom URL is not set up yet, `npm run dev` prints instructions. You can also use **http://127.0.0.1:5173/** as a fallback.
+---
 
-### npm scripts
+## Run everything daily
+
+Use **three terminals**:
+
+| Terminal | Command |
+|----------|---------|
+| 1 — Database | `docker compose up -d postgres` |
+| 2 — API | `cd backend && export $(grep -v '^#' ../.env \| xargs) && mvn spring-boot:run` |
+| 3 — UI | `cd frontend && npm run dev` |
+
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost.vinaykumar-portfolio.com:5173/ |
+| API | http://localhost:8080/api |
+| Postgres | `localhost:5432` / DB `portfolio_db` |
+
+---
+
+## Architecture
+
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — stack, APIs, database
+- [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md) — files by category
+
+## Frontend (React)
+
+**Requirements:** Node.js **20+** and npm.
 
 | Script | Description |
 |--------|-------------|
-| `npm run setup:host` | One-time `/etc/hosts` entry for the dev URL |
-| `npm run dev` | Dev server at http://localhost.vinaykumar-portfolio.com:5173 |
-| `npm run build` | Type-check + production build to `dist/` |
-| `npm run preview` | Preview production build |
+| `npm run dev` | Dev server |
+| `npm run build` | Production build → `dist/` |
 | `npm run lint` | ESLint |
-
-### Frontend structure (by category)
-
-| Category | Path | Role |
-|----------|------|------|
-| App shell | `src/app/` | `App.tsx`, `routes.tsx` |
-| UI | `src/webservices/pages/home/` | `HomePage.tsx` — composes portfolio sections |
-| UI components | `src/webservices/components/portfolio/` | Nav, Hero, About, Projects, Skills, Contact |
-| UI assets | `src/webservices/assets/` | Logos, images |
-| API | `src/dataservices/api/` | Axios `client.ts` |
-| Config | `src/dataservices/config/` | `constants.ts` (API URL) |
-| Types | `src/dataservices/types/` | Shared DTO types |
-| Global CSS | `src/styles/index.css` | Tailwind v4, theme tokens, fonts |
-
-**Rule:** No `fetch`/Axios in `webservices/` — all HTTP calls go in `dataservices/api/`.
-
-### Environment
 
 `frontend/.env.development`:
 
@@ -88,38 +158,32 @@ If the custom URL is not set up yet, `npm run dev` prints instructions. You can 
 VITE_API_BASE_URL=http://localhost:8080/api
 ```
 
-Used when the Spring Boot backend is running on port **8080**.
+**Rule:** HTTP calls only in `frontend/src/dataservices/api/`, not in `webservices/`.
 
-### Tech versions (installed)
+## PostgreSQL tables
 
-- React 18, Vite 5, TypeScript 5.6
-- react-router-dom 6, axios 1.7, Tailwind CSS 4, motion, lucide-react
+| Table | React constant |
+|-------|----------------|
+| `portfolio_nav_content` | `PORTFOLIO_NAV_CONTENT` |
+| `portfolio_landing_page_content` | `PORTFOLIO_LANDING_PAGE_CONTENT` |
 
-## PostgreSQL
+## Backend API (v1)
 
-```bash
-./database/scripts/setup-postgres.sh
-```
+| API | GET path | Optional query |
+|-----|----------|----------------|
+| portfolio-nav-content | `/api/portfolio-nav-content` | `?id=1` |
+| portfolio-landing-page-content | `/api/portfolio-landing-page-content` | `?id=1` |
 
-Requires [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or local Postgres via Homebrew). See [database/README.md](database/README.md).
+Request/response formats: [docs/API.md](docs/API.md)
 
-Details: [database/README.md](database/README.md)
+**GitHub Pages:** set repo variable `VITE_API_BASE_URL` to your hosted API (e.g. `https://your-api.railway.app/api`). Without it, the site uses static fallback copy.
 
-**Tables:** `portfolio_nav_content` (`PORTFOLIO_NAV_CONTENT`), `portfolio_landing_page_content` (`PORTFOLIO_LANDING_PAGE_CONTENT`) — separate, not mixed.
+## Deployment note
 
-## Backend (planned)
-
-Not scaffolded yet. When added:
-
-```bash
-cd backend
-mvn spring-boot:run
-```
-
-API base: `http://localhost:8080/api` — see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for endpoints and PostgreSQL setup.
+GitHub Pages hosts **only** the static React build. The live site does **not** use Postgres until you also deploy the API + hosted database and point `VITE_API_BASE_URL` at production.
 
 ## What to do next
 
-1. Scaffold Spring Boot `backend/` with Flyway migrations
-2. Add `dataservices/api/profileApi.ts`, `projectsApi.ts`, etc.
-3. Replace placeholder portfolio copy, project data, and social links with real content
+1. Wire `frontend/src/dataservices/api/` to the new GET endpoints
+2. Add more tables/APIs (about, work, skills, contact)
+3. Host API + Postgres for production

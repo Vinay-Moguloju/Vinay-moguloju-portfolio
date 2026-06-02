@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: portfolio-backend
+  datasource:
+    password: ${SPRING_DATASOURCE_PASSWORD:change_me_locally}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/portfolio_db}
+    username: ${SPRING_DATASOURCE_USERNAME:portfolio_user}
+  flyway:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+portfolio:
+  cors:
+    allowed-origins: >-
+      http://localhost:5173,
+      http://127.0.0.1:5173,
+      http://localhost.vinaykumar-portfolio.com:5173,
+      https://vinay-moguloju.github.io
