@@ -29,7 +29,7 @@ export const PORTFOLIO_MEDIA_URLS = {
 /** External profile and contact URLs for portfolio social links. */
 export const PORTFOLIO_SOCIAL_PROFILE_URLS = {
   email: 'mailto:mogulojuvinaykumar@gmail.com',
-  github: 'https://github.com/vinaymoguloju',
-  linkedIn: 'https://www.linkedin.com/in/vinaymoguloju',
+  github: 'https://github.com/dashboard',
+  linkedIn: 'https://www.linkedin.com/in/vinay-kumar-moguloju-033267192',
   phone: 'tel:+15712958383',
 } as const

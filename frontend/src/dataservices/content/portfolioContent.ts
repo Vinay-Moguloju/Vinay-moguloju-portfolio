@@ -16,7 +16,7 @@ export const PORTFOLIO_BRAND = {
   fullName: 'Vinay Kumar Moguloju',
   location: 'Melissa, TX',
   phone: '571-295-8383',
-  title: 'Senior Frontend Engineer',
+  title: 'Senior Fullstack Engineer',
 } as const
 
 export const PORTFOLIO_ACCESSIBILITY_LABELS = {
@@ -38,13 +38,13 @@ export const PORTFOLIO_NAV_CONTENT = {
 } as const
 
 export const PORTFOLIO_LANDING_PAGE_CONTENT = {
-  availabilityBadge: 'Open to senior frontend opportunities',
-  headlineAccent: 'Builds Accessible',
-  headlineMuted: 'E-Commerce Experiences.',
+  availabilityBadge: 'Open to senior Fullstack opportunities',
+  headlineAccent: 'Builds Things',
+  headlineMuted: 'That Matter.',
   intro:
-    'Senior Frontend Engineer with 9+ years building scalable SPAs and micro-frontends across e-commerce, retail, and telecom — focused on React, Next.js, performance, and WCAG 2.1 AA accessibility.',
+    'Senior Fullstack Engineer with 9+ years building scalable SPAs and micro-frontends across e-commerce, retail, and telecom — focused on React, Next.js, performance, and WCAG 2.1 AA accessibility.',
   primaryActionLabel: 'View my work',
-  roleWords: ['Senior Frontend', 'React / Next.js', 'Micro-Frontends'],
+  roleWords: ['Senior Fullstack', 'React / Next.js', 'Micro-Frontends'],
   secondaryActionLabel: 'Hire me',
 } as const
 
@@ -53,7 +53,7 @@ export const PORTFOLIO_ABOUT_CONTENT = {
     'I design and ship accessible, high-performance frontends for customer-facing products at scale.',
   imageAlt: 'Vinay Kumar working on frontend architecture and UI development',
   paragraphs: [
-    'I am a Senior Frontend Engineer with around 9 years of experience analyzing, designing, and developing highly scalable, multi-tier web applications. I specialize in React.js, Next.js, TypeScript, and modern CSS workflows across e-commerce, retail, and telecom domains.',
+    'I am a Senior Fullstack Engineer with around 9 years of experience analyzing, designing, and developing highly scalable, multi-tier web applications. I specialize in React.js, Next.js, TypeScript, and modern CSS workflows across e-commerce, retail, and telecom domains.',
     'At Abercrombie & Fitch, I build and enhance customer-facing micro-frontends, migrate legacy experiences to React 18, contribute shared utilities across MFEs, and use AI-assisted development with Cursor, LLMs, and MCP to accelerate delivery while maintaining quality, accessibility, and team standards.',
   ],
   sectionLabel: '01 / About',
@@ -63,7 +63,7 @@ export const PORTFOLIO_ABOUT_CONTENT = {
     { label: 'Current role', value: 'A&F' },
     { label: 'Accessibility standard', value: 'WCAG 2.1 AA' },
   ],
-  statusChip: 'Currently: Senior Frontend Engineer @ Abercrombie & Fitch',
+  statusChip: 'Currently: Senior Fullstack Engineer @ Abercrombie & Fitch',
 } as const
 
 export const PORTFOLIO_PROJECTS_CONTENT = {
@@ -156,7 +156,7 @@ export const PORTFOLIO_SKILLS_CONTENT = {
       ],
     },
   ],
-  commentLabel: '// Senior frontend stack',
+  commentLabel: '// Senior Fullstack stack',
   heading: 'Core skills from production work',
   sectionLabel: '03 / Skills',
   tools: [
@@ -193,7 +193,7 @@ export const PORTFOLIO_SKILLS_CONTENT = {
 
 export const PORTFOLIO_CONTACT_CONTENT = {
   footerCopyright:
-    '© 2026 Vinay Kumar Moguloju · Senior Frontend Engineer · Built with React + TypeScript',
+    '© 2026 Vinay Kumar Moguloju · Senior Fullstack Engineer · Built with React + TypeScript',
   form: {
     emailLabel: 'Email',
     emailPlaceholder: 'you@example.com',
@@ -204,11 +204,11 @@ export const PORTFOLIO_CONTACT_CONTENT = {
     submitLabel: 'Send message',
     title: 'Send a message',
   },
-  headingAccent: ' senior frontend teams',
+  headingAccent: ' Senior Fullstack teams',
   headingPrimary: "Let's connect for",
   headingSuffix: '.',
   intro:
-    'I am open to senior frontend engineer roles, contract work, and strong product/engineering collaborations. Based in Melissa, TX and experienced working remotely with distributed Agile teams across e-commerce, retail, and telecom.',
+    'I am open to Senior Fullstack engineer roles, contract work, and strong product/engineering collaborations. Based in Melissa, TX and experienced working remotely with distributed Agile teams across e-commerce, retail, and telecom.',
   sectionLabel: '04 / Contact',
   socialLinks: [
     {
