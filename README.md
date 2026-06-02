@@ -9,7 +9,8 @@ Personal portfolio for **Vinay Moguloju** — React UI, Spring Boot REST API, an
 | Architecture docs | Done |
 | React frontend (`frontend/`) | Done — Vite 5 + React 18 starter running locally |
 | Java backend (`backend/`) | Not started |
-| PostgreSQL + Flyway | Not started (schema defined in architecture doc) |
+| PostgreSQL (Docker) | Done — `portfolio_nav_content`, `portfolio_landing_page_content` ([database/README.md](database/README.md)) |
+| Java backend + Flyway | Not started |
 
 ## Repository layout
 
@@ -25,6 +26,8 @@ Vinay-moguloju-portfolio/
 │       ├── dataservices/      # API client & types
 │       └── styles/            # Global CSS
 ├── backend/                   # (planned) Spring Boot
+├── database/                  # Per-feature SQL (nav / landing folders)
+├── docker-compose.yml         # PostgreSQL 16
 └── README.md
 ```
 
@@ -91,6 +94,18 @@ Used when the Spring Boot backend is running on port **8080**.
 
 - React 18, Vite 5, TypeScript 5.6
 - react-router-dom 6, axios 1.7, Tailwind CSS 4, motion, lucide-react
+
+## PostgreSQL
+
+```bash
+./database/scripts/setup-postgres.sh
+```
+
+Requires [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or local Postgres via Homebrew). See [database/README.md](database/README.md).
+
+Details: [database/README.md](database/README.md)
+
+**Tables:** `portfolio_nav_content` (`PORTFOLIO_NAV_CONTENT`), `portfolio_landing_page_content` (`PORTFOLIO_LANDING_PAGE_CONTENT`) — separate, not mixed.
 
 ## Backend (planned)
 

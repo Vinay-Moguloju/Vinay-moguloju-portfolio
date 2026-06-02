@@ -1,0 +1,19 @@
+services:
+  postgres:
+    container_name: portfolio-postgres
+    env_file:
+      - .env
+    healthcheck:
+      interval: 5s
+      retries: 5
+      test: ['CMD-SHELL', 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      timeout: 5s
+    image: postgres:16-alpine
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - portfolio_pg_data:/var/lib/postgresql/data
+      - ./database:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  portfolio_pg_data:
