@@ -4,6 +4,7 @@
  */
 
 import { fetchPortfolioNavContent } from '@dataservices/api/portfolioNavContentApi'
+import { isPortfolioApiEnabled } from '@dataservices/config/portfolioApiConfig'
 import { PORTFOLIO_NAV_CONTENT } from '@dataservices/content/portfolioContent'
 import type { PortfolioNavContent } from '@dataservices/types/portfolioNavContent.types'
 import { useEffect, useState } from 'react'
@@ -31,6 +32,11 @@ export function usePortfolioNavContent(args: UsePortfolioNavContentArgs = {}) {
     let isMounted = true
 
     const loadPortfolioNavContent = async () => {
+      if (!isPortfolioApiEnabled) {
+        setIsPortfolioNavContentLoading(false)
+        return
+      }
+
       setIsPortfolioNavContentLoading(true)
 
       try {

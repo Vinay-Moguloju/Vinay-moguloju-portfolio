@@ -51,13 +51,17 @@ Open:
 
 ### Environment
 
-`frontend/.env.development`:
+`frontend/.env.development` (local API):
 
 ```env
 VITE_API_BASE_URL=http://localhost:8080/api
 ```
 
-Change this if the backend runs on a different port (e.g. `8081`).
+**GitHub Pages** ([live site](https://vinay-moguloju.github.io/Vinay-moguloju-portfolio/)):
+
+- GitHub Pages only serves static files — **not** your Java API or Postgres.
+- If `VITE_API_BASE_URL` is missing or empty at build time, the app **does not** call the API and uses `portfolioContent.ts` (avoids 404s to `github.io/portfolio-nav-content`).
+- To use the DB on production: host the backend (Railway, Render, etc.), then set GitHub **Settings → Secrets and variables → Actions → Variables** → `VITE_API_BASE_URL` = `https://your-api.example.com/api`, and redeploy.
 
 ### Other commands
 

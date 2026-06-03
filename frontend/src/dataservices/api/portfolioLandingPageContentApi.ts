@@ -3,7 +3,7 @@
  * @description Fetches landing page content from GET /api/portfolio-landing-page-content.
  */
 
-import { apiClient } from './client'
+import { apiClient, assertPortfolioApiEnabled } from './client'
 import { PORTFOLIO_API_PATHS } from '@dataservices/config/portfolioApiPaths'
 import type { PortfolioLandingPageContent } from '@dataservices/types/portfolioLandingPageContent.types'
 
@@ -25,6 +25,8 @@ export type FetchPortfolioLandingPageContentArgs = {
 export const fetchPortfolioLandingPageContent = async (
   args: FetchPortfolioLandingPageContentArgs = {},
 ): Promise<PortfolioLandingPageContent> => {
+  assertPortfolioApiEnabled()
+
   const { portfolioLandingPageContentId } = args
   const response = await apiClient.get<PortfolioLandingPageContent>(
     PORTFOLIO_API_PATHS.portfolioLandingPageContent,

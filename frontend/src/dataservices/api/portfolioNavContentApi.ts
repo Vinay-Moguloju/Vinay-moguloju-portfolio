@@ -3,7 +3,7 @@
  * @description Fetches portfolio nav content from GET /api/portfolio-nav-content.
  */
 
-import { apiClient } from './client'
+import { apiClient, assertPortfolioApiEnabled } from './client'
 import { PORTFOLIO_API_PATHS } from '@dataservices/config/portfolioApiPaths'
 import type { PortfolioNavContent } from '@dataservices/types/portfolioNavContent.types'
 
@@ -25,6 +25,8 @@ export type FetchPortfolioNavContentArgs = {
 export const fetchPortfolioNavContent = async (
   args: FetchPortfolioNavContentArgs = {},
 ): Promise<PortfolioNavContent> => {
+  assertPortfolioApiEnabled()
+
   const { portfolioNavContentId } = args
   const response = await apiClient.get<PortfolioNavContent>(
     PORTFOLIO_API_PATHS.portfolioNavContent,

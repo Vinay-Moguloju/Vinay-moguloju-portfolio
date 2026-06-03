@@ -4,6 +4,7 @@
  */
 
 import { fetchPortfolioLandingPageContent } from '@dataservices/api/portfolioLandingPageContentApi'
+import { isPortfolioApiEnabled } from '@dataservices/config/portfolioApiConfig'
 import { PORTFOLIO_LANDING_PAGE_CONTENT } from '@dataservices/content/portfolioContent'
 import type { PortfolioLandingPageContent } from '@dataservices/types/portfolioLandingPageContent.types'
 import { useEffect, useState } from 'react'
@@ -37,6 +38,11 @@ export function usePortfolioLandingPageContent(
     let isMounted = true
 
     const loadPortfolioLandingPageContent = async () => {
+      if (!isPortfolioApiEnabled) {
+        setIsPortfolioLandingPageContentLoading(false)
+        return
+      }
+
       setIsPortfolioLandingPageContentLoading(true)
 
       try {

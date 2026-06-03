@@ -9,9 +9,10 @@ import portfolioAboutWorkspaceImage from '@webservices/assets/hero.png'
 export const PORTFOLIO_GOOGLE_FONTS_STYLESHEET_URL =
   'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap'
 
-/** REST API base URL for portfolio backend integration. */
-export const PORTFOLIO_API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080/api'
+export {
+  isPortfolioApiEnabled,
+  PORTFOLIO_API_BASE_URL,
+} from './portfolioApiConfig'
 
 /** Remote and local media URLs referenced by portfolio sections. */
 export const PORTFOLIO_MEDIA_URLS = {
