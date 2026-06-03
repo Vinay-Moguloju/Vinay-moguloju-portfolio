@@ -96,13 +96,13 @@ npm run dev
 
 Request/response formats: [docs/API.md](docs/API.md)
 
-**GitHub Pages:** set repo variable `VITE_API_BASE_URL` to your hosted API (e.g. `https://your-api.railway.app/api`). Without it, the site uses static fallback copy.
+**GitHub Pages + live DB:** deploy API to Render, set `VITE_API_BASE_URL`, redeploy Pages — **[docs/DEPLOY_PRODUCTION.md](docs/DEPLOY_PRODUCTION.md)** (step-by-step).
 
 ## Deployment note
 
-GitHub Pages hosts **only** the static React build. The live site does **not** use Postgres until you also deploy the API + hosted database and point `VITE_API_BASE_URL` at production.
+GitHub Pages hosts **only** the static React build. For DB-driven content on the live site, follow [docs/DEPLOY_PRODUCTION.md](docs/DEPLOY_PRODUCTION.md).
 
 ## What to do next
 
-1. Add more tables/APIs (about, work, skills, contact)
-2. Host API + Postgres for production (set GitHub `VITE_API_BASE_URL`)
+1. **[Deploy API + Postgres for GitHub Pages](docs/DEPLOY_PRODUCTION.md)** — Render + `VITE_API_BASE_URL`
+2. Add more tables/APIs (about, work, skills, contact)

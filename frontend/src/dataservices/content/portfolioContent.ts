@@ -42,7 +42,7 @@ export const PORTFOLIO_LANDING_PAGE_CONTENT = {
   headlineAccent: 'Builds Things',
   headlineMuted: 'That Matter.',
   intro:
-    'Senior Fullstack Engineer with 9+ years building scalable SPAs and micro-frontends across e-commerce, retail, and telecom — focused on React, Next.js, performance, and WCAG 2.1 AA accessibility.',
+    'Senior Fullstack Engineer building scalable SPAs and micro-frontends across e-commerce, retail, and telecom — focused on React, Next.js, performance, and WCAG 2.1 AA accessibility.',
   primaryActionLabel: 'View my work',
   roleWords: ['Senior Fullstack', 'React / Next.js', 'Micro-Frontends'],
   secondaryActionLabel: 'Hire me',
@@ -53,12 +53,12 @@ export const PORTFOLIO_ABOUT_CONTENT = {
     'I design and ship accessible, high-performance frontends for customer-facing products at scale.',
   imageAlt: 'Vinay Kumar working on frontend architecture and UI development',
   paragraphs: [
-    'I am a Senior Fullstack Engineer with around 9 years of experience analyzing, designing, and developing highly scalable, multi-tier web applications. I specialize in React.js, Next.js, TypeScript, and modern CSS workflows across e-commerce, retail, and telecom domains.',
+    'I am a Senior Fullstack Engineer focused on analyzing, designing, and developing highly scalable, multi-tier web applications. I specialize in React.js, Next.js, TypeScript, and modern CSS workflows across e-commerce, retail, and telecom domains.',
     'At Abercrombie & Fitch, I build and enhance customer-facing micro-frontends, migrate legacy experiences to React 18, contribute shared utilities across MFEs, and use AI-assisted development with Cursor, LLMs, and MCP to accelerate delivery while maintaining quality, accessibility, and team standards.',
   ],
   sectionLabel: '01 / About',
   stats: [
-    { label: 'Years of experience', value: '9+' },
+    { label: 'Core focus', value: 'Fullstack' },
     { label: 'Industry domains', value: '3' },
     { label: 'Current role', value: 'A&F' },
     { label: 'Accessibility standard', value: 'WCAG 2.1 AA' },

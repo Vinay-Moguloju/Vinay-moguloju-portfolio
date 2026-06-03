@@ -1,4 +1,4 @@
--- Seed: PORTFOLIO_LANDING_PAGE_CONTENT (frontend/src/dataservices/content/portfolioContent.ts)
+-- Seed: PORTFOLIO_LANDING_PAGE_CONTENT
 
 INSERT INTO portfolio_landing_page_content (
     availability_badge,
