@@ -2,8 +2,8 @@ import { AnimatePresence, motion } from 'motion/react'
 import {
   PORTFOLIO_ACCESSIBILITY_LABELS,
   PORTFOLIO_BRAND,
-  PORTFOLIO_NAV_CONTENT,
 } from '@dataservices/content/portfolioContent'
+import { usePortfolioNavContent } from '@/hooks/usePortfolioNavContent'
 import { usePortfolioNavInteractions } from '@/hooks/usePortfolioNavInteractions'
 import { UpperPortfolioNavContent } from '../UpperPortfolioNavContent'
 
@@ -17,6 +17,7 @@ import { UpperPortfolioNavContent } from '../UpperPortfolioNavContent'
  * <PortfolioNav />
  */
 export function PortfolioNav() {
+  const { portfolioNavContent } = usePortfolioNavContent()
   const {
     isPortfolioMobileMenuOpen,
     openPortfolioHomeSection,
@@ -32,7 +33,7 @@ export function PortfolioNav() {
       >
         <UpperPortfolioNavContent
           brandLabel={PORTFOLIO_BRAND.displayName}
-          hireMeLabel={PORTFOLIO_NAV_CONTENT.hireMeLabel}
+          hireMeLabel={portfolioNavContent.hireMeLabel}
           isMobileMenuOpen={isPortfolioMobileMenuOpen}
           mobileMenuToggleLabels={{
             close: PORTFOLIO_ACCESSIBILITY_LABELS.mobileMenuClose,
@@ -41,7 +42,7 @@ export function PortfolioNav() {
           onBrandClick={openPortfolioHomeSection}
           onMobileMenuToggle={togglePortfolioMobileMenu}
           onNavigate={openPortfolioNavSectionModal}
-          sectionLinks={PORTFOLIO_NAV_CONTENT.sectionLinks}
+          sectionLinks={portfolioNavContent.sectionLinks}
         />
       </nav>
 
@@ -54,7 +55,7 @@ export function PortfolioNav() {
             transition={{ duration: 0.2 }}
             className="portfolio-nav__mobile-menu"
           >
-            {PORTFOLIO_NAV_CONTENT.sectionLinks.map((link) => (
+            {portfolioNavContent.sectionLinks.map((link) => (
               <button
                 key={link.sectionId}
                 type="button"
@@ -69,7 +70,7 @@ export function PortfolioNav() {
               onClick={() => openPortfolioNavSectionModal('contact')}
               className="portfolio-button portfolio-button--hire-me portfolio-nav__mobile-hire-me"
             >
-              {PORTFOLIO_NAV_CONTENT.hireMeLabel}
+              {portfolioNavContent.hireMeLabel}
             </button>
           </motion.div>
         )}

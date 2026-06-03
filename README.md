@@ -28,112 +28,50 @@ Vinay-moguloju-portfolio/
 
 ---
 
-## Local development setup (step by step)
+## Run locally
 
-Do these once, then use **Run everything daily** below.
+Each part has its own guide:
 
-### Step 1 — Docker Desktop
+| Part | README |
+|------|--------|
+| **Database** (Docker Postgres) | [database/README.md](database/README.md) |
+| **Backend** (Spring Boot API) | [backend/README.md](backend/README.md) |
+| **Frontend** (React + Vite) | [frontend/README.md](frontend/README.md) |
 
-1. Install [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/).
-2. Open it and wait until it says **Docker is running**.
+### Quick start (3 terminals)
 
-### Step 2 — PostgreSQL (database + tables)
+**1 — Database** (repo root):
 
 ```bash
-cd /Users/aishwaryachintaluru/Vinay-moguloju-portfolio
-cp .env.example .env
-./database/scripts/setup-postgres.sh
+docker compose up -d postgres
 ```
 
-You should see rows from `portfolio_nav_content` and `portfolio_landing_page_content`.
+First time only: `cp .env.example .env` then `./database/scripts/setup-postgres.sh`
 
-**Reset DB (fresh migrations):**
-
-```bash
-docker compose down -v
-./database/scripts/setup-postgres.sh
-```
-
-More detail: [database/README.md](database/README.md)
-
-### Step 3 — Homebrew on your PATH (if `brew` not found)
-
-Homebrew is often installed at `/opt/homebrew` but missing from PATH:
+**2 — Backend** (`backend/`):
 
 ```bash
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
-source ~/.zshrc
-brew --version
-```
-
-### Step 4 — Java
-
-Check:
-
-```bash
-java -version
-```
-
-Use **Java 21** (or 17+). Oracle JDK or Homebrew OpenJDK both work.
-
-### Step 5 — Maven
-
-```bash
-brew install maven
-mvn -v
-```
-
-If `mvn` is not found, use:
-
-```bash
-/opt/homebrew/bin/mvn -v
-```
-
-### Step 6 — Run the Java API
-
-```bash
-cd backend
 export $(grep -v '^#' ../.env | xargs)
 mvn spring-boot:run
 ```
 
-Test in another terminal:
+**3 — Frontend** (`frontend/`):
 
 ```bash
-curl http://localhost:8080/api/portfolio-nav-content
-curl http://localhost:8080/api/portfolio-landing-page-content
-```
-
-Backend details: [backend/README.md](backend/README.md)
-
-### Step 7 — Run the React app
-
-```bash
-cd frontend
-npm install
-npm run setup:host   # one-time: custom dev hostname
 npm run dev
 ```
-
-Open **http://localhost.vinaykumar-portfolio.com:5173/** (or http://127.0.0.1:5173/)
-
----
-
-## Run everything daily
-
-Use **three terminals**:
-
-| Terminal | Command |
-|----------|---------|
-| 1 — Database | `docker compose up -d postgres` |
-| 2 — API | `cd backend && export $(grep -v '^#' ../.env \| xargs) && mvn spring-boot:run` |
-| 3 — UI | `cd frontend && npm run dev` |
 
 | Service | URL |
 |---------|-----|
 | Frontend | http://localhost.vinaykumar-portfolio.com:5173/ |
 | API | http://localhost:8080/api |
-| Postgres | `localhost:5432` / DB `portfolio_db` |
+| Postgres | `localhost:5432` / `portfolio_db` |
+
+### One-time tools
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Java 21+: `java -version`
+- Maven: `brew install maven` (if `brew` missing: `eval "$(/opt/homebrew/bin/brew shellenv)"`)
 
 ---
 
@@ -141,24 +79,6 @@ Use **three terminals**:
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — stack, APIs, database
 - [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md) — files by category
-
-## Frontend (React)
-
-**Requirements:** Node.js **20+** and npm.
-
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Dev server |
-| `npm run build` | Production build → `dist/` |
-| `npm run lint` | ESLint |
-
-`frontend/.env.development`:
-
-```env
-VITE_API_BASE_URL=http://localhost:8080/api
-```
-
-**Rule:** HTTP calls only in `frontend/src/dataservices/api/`, not in `webservices/`.
 
 ## PostgreSQL tables
 
@@ -184,6 +104,5 @@ GitHub Pages hosts **only** the static React build. The live site does **not** u
 
 ## What to do next
 
-1. Wire `frontend/src/dataservices/api/` to the new GET endpoints
-2. Add more tables/APIs (about, work, skills, contact)
-3. Host API + Postgres for production
+1. Add more tables/APIs (about, work, skills, contact)
+2. Host API + Postgres for production (set GitHub `VITE_API_BASE_URL`)
