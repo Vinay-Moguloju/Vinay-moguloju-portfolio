@@ -1,35 +1,34 @@
 package com.vinaymoguloju.portfolio.config;
 
 import java.util.Arrays;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * Enables CORS for the React dev server and GitHub Pages origin.
+ * Without this, browsers show failed requests even when the API returns 200.
+ */
 @Configuration
-public class PortfolioWebCorsConfig {
+public class PortfolioWebCorsConfig implements WebMvcConfigurer {
 
   @Value("${portfolio.cors.allowed-origins}")
   private String portfolioCorsAllowedOrigins;
 
-  @Bean
-  public CorsConfigurationSource portfolioCorsConfigurationSource() {
-    List<String> allowedOrigins = Arrays.stream(portfolioCorsAllowedOrigins.split(","))
-        .map(String::trim)
-        .filter((origin) -> !origin.isEmpty())
-        .toList();
+  @Override
+  public void addCorsMappings(CorsRegistry corsRegistry) {
+    String[] allowedOrigins =
+        Arrays.stream(portfolioCorsAllowedOrigins.split(","))
+            .map(String::trim)
+            .filter((origin) -> !origin.isEmpty())
+            .toArray(String[]::new);
 
-    CorsConfiguration corsConfiguration = new CorsConfiguration();
-    corsConfiguration.setAllowedHeaders(List.of("*"));
-    corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "OPTIONS"));
-    corsConfiguration.setAllowedOrigins(allowedOrigins);
-    corsConfiguration.setAllowCredentials(true);
-
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/api/**", corsConfiguration);
-    return source;
+    corsRegistry
+        .addMapping("/api/**")
+        .allowedHeaders("*")
+        .allowedMethods("GET", "POST", "PUT", "OPTIONS")
+        .allowedOrigins(allowedOrigins)
+        .allowCredentials(true);
   }
 }

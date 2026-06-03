@@ -1,7 +1,5 @@
-import {
-  PORTFOLIO_BRAND,
-  PORTFOLIO_LANDING_PAGE_CONTENT,
-} from '@dataservices/content/portfolioContent'
+import { PORTFOLIO_BRAND } from '@dataservices/content/portfolioContent'
+import { usePortfolioLandingPageContent } from '@/hooks/usePortfolioLandingPageContent'
 import { usePortfolioLandingPageParticleCanvas } from '@/hooks/usePortfolioLandingPageParticleCanvas'
 import { usePortfolioSectionModal } from '@/hooks/usePortfolioSectionModal'
 import {
@@ -24,6 +22,7 @@ import {
  * <PortfolioLandingPage />
  */
 export function PortfolioLandingPage() {
+  const { portfolioLandingPageContent } = usePortfolioLandingPageContent()
   const { portfolioLandingPageCanvasRef } = usePortfolioLandingPageParticleCanvas()
   const { openPortfolioSectionModal } = usePortfolioSectionModal()
 
@@ -37,22 +36,22 @@ export function PortfolioLandingPage() {
 
       <LowerPortfolioContent className="portfolio-landing-page__content">
         <PortfolioLandingAvailabilityBadge
-          availabilityLabel={PORTFOLIO_LANDING_PAGE_CONTENT.availabilityBadge}
+          availabilityLabel={portfolioLandingPageContent.availabilityBadge}
         />
         <PortfolioLandingHeadline
           displayName={PORTFOLIO_BRAND.displayName}
-          headlineAccent={PORTFOLIO_LANDING_PAGE_CONTENT.headlineAccent}
-          headlineMuted={PORTFOLIO_LANDING_PAGE_CONTENT.headlineMuted}
+          headlineAccent={portfolioLandingPageContent.headlineAccent}
+          headlineMuted={portfolioLandingPageContent.headlineMuted}
         />
         <PortfolioLandingIntroRow
-          intro={PORTFOLIO_LANDING_PAGE_CONTENT.intro}
-          roleWords={PORTFOLIO_LANDING_PAGE_CONTENT.roleWords}
+          intro={portfolioLandingPageContent.intro}
+          roleWords={portfolioLandingPageContent.roleWords}
         />
         <PortfolioLandingActionRow
           onPrimaryActionClick={() => openPortfolioSectionModal('work')}
           onSecondaryActionClick={() => openPortfolioSectionModal('contact')}
-          primaryActionLabel={PORTFOLIO_LANDING_PAGE_CONTENT.primaryActionLabel}
-          secondaryActionLabel={PORTFOLIO_LANDING_PAGE_CONTENT.secondaryActionLabel}
+          primaryActionLabel={portfolioLandingPageContent.primaryActionLabel}
+          secondaryActionLabel={portfolioLandingPageContent.secondaryActionLabel}
         />
       </LowerPortfolioContent>
     </section>
