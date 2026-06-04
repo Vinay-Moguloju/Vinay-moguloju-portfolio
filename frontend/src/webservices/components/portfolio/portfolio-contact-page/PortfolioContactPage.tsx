@@ -10,17 +10,13 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { getPortfolioTypographyPresetClassName } from '@dataservices/config/portfolioTypographyPresets'
-import {
-  PORTFOLIO_BRAND,
-  PORTFOLIO_CONTACT_CONTENT,
-} from '@dataservices/content/portfolioContent'
+import { PORTFOLIO_BRAND } from '@dataservices/content/portfolioContent'
+import type { PortfolioContactProfileKey } from '@dataservices/types/portfolioContactContent.types'
+import { usePortfolioContactContent } from '@/hooks/usePortfolioContactContent'
 import { usePortfolioContactForm } from '@/hooks/usePortfolioContactForm'
 import { FooterPortfolioContent } from '../../common'
 
-const PORTFOLIO_CONTACT_SOCIAL_ICON_MAP: Record<
-  (typeof PORTFOLIO_CONTACT_CONTENT.socialLinks)[number]['profileKey'],
-  LucideIcon
-> = {
+const PORTFOLIO_CONTACT_SOCIAL_ICON_MAP: Record<PortfolioContactProfileKey, LucideIcon> = {
   email: Mail,
   github: Code2,
   linkedIn: Briefcase,
@@ -37,6 +33,7 @@ const PORTFOLIO_CONTACT_SOCIAL_ICON_MAP: Record<
  * <PortfolioContactPage />
  */
 export function PortfolioContactPage() {
+  const { portfolioContactContent } = usePortfolioContactContent()
   const portfolioContactSectionRef = useRef(null)
   const isPortfolioContactInView = useInView(portfolioContactSectionRef, {
     margin: '-80px',
@@ -59,7 +56,7 @@ export function PortfolioContactPage() {
           className="portfolio-contact__header"
         >
           <span className={getPortfolioTypographyPresetClassName('sectionLabel')}>
-            {PORTFOLIO_CONTACT_CONTENT.sectionLabel}
+            {portfolioContactContent.sectionLabel}
           </span>
         </motion.div>
 
@@ -72,20 +69,20 @@ export function PortfolioContactPage() {
             <h2
               className={`${getPortfolioTypographyPresetClassName('displayHeadingLg')} portfolio-contact__heading`}
             >
-              {PORTFOLIO_CONTACT_CONTENT.headingPrimary}
+              {portfolioContactContent.headingPrimary}
               <span className={getPortfolioTypographyPresetClassName('textAccent')}>
-                {PORTFOLIO_CONTACT_CONTENT.headingAccent}
+                {portfolioContactContent.headingAccent}
               </span>
-              {PORTFOLIO_CONTACT_CONTENT.headingSuffix}
+              {portfolioContactContent.headingSuffix}
             </h2>
             <p
               className={`${getPortfolioTypographyPresetClassName('body')} portfolio-contact__intro-copy`}
             >
-              {PORTFOLIO_CONTACT_CONTENT.intro}
+              {portfolioContactContent.intro}
             </p>
 
             <div className="portfolio-social-list">
-              {PORTFOLIO_CONTACT_CONTENT.socialLinks.map((social, socialIndex) => {
+              {portfolioContactContent.socialLinks.map((social, socialIndex) => {
                 const SocialIcon = PORTFOLIO_CONTACT_SOCIAL_ICON_MAP[social.profileKey]
 
                 return (
@@ -135,16 +132,16 @@ export function PortfolioContactPage() {
                   <Send className="portfolio-icon-primary" size={24} />
                 </div>
                 <h3 className={getPortfolioTypographyPresetClassName('formSuccessTitle')}>
-                  {PORTFOLIO_CONTACT_CONTENT.successTitle}
+                  {portfolioContactContent.successTitle}
                 </h3>
                 <p className={getPortfolioTypographyPresetClassName('formSuccessCopy')}>
-                  {PORTFOLIO_CONTACT_CONTENT.successMessage}
+                  {portfolioContactContent.successMessage}
                 </p>
               </div>
             ) : (
               <form onSubmit={submitPortfolioContactForm} className="portfolio-form-panel">
                 <h3 className={getPortfolioTypographyPresetClassName('formTitle')}>
-                  {PORTFOLIO_CONTACT_CONTENT.form.title}
+                  {portfolioContactContent.form.title}
                 </h3>
 
                 <div className="portfolio-form-stack">
@@ -153,13 +150,13 @@ export function PortfolioContactPage() {
                       className={getPortfolioTypographyPresetClassName('formLabel')}
                       htmlFor="portfolio-contact-name"
                     >
-                      {PORTFOLIO_CONTACT_CONTENT.form.nameLabel}
+                      {portfolioContactContent.form.nameLabel}
                     </label>
                     <input
                       id="portfolio-contact-name"
                       type="text"
                       required
-                      placeholder={PORTFOLIO_CONTACT_CONTENT.form.namePlaceholder}
+                      placeholder={portfolioContactContent.form.namePlaceholder}
                       value={portfolioContactFormFields.name}
                       onChange={(event) =>
                         updatePortfolioContactFormField('name', event.target.value)
@@ -173,13 +170,13 @@ export function PortfolioContactPage() {
                       className={getPortfolioTypographyPresetClassName('formLabel')}
                       htmlFor="portfolio-contact-email"
                     >
-                      {PORTFOLIO_CONTACT_CONTENT.form.emailLabel}
+                      {portfolioContactContent.form.emailLabel}
                     </label>
                     <input
                       id="portfolio-contact-email"
                       type="email"
                       required
-                      placeholder={PORTFOLIO_CONTACT_CONTENT.form.emailPlaceholder}
+                      placeholder={portfolioContactContent.form.emailPlaceholder}
                       value={portfolioContactFormFields.email}
                       onChange={(event) =>
                         updatePortfolioContactFormField('email', event.target.value)
@@ -193,13 +190,13 @@ export function PortfolioContactPage() {
                       className={getPortfolioTypographyPresetClassName('formLabel')}
                       htmlFor="portfolio-contact-message"
                     >
-                      {PORTFOLIO_CONTACT_CONTENT.form.messageLabel}
+                      {portfolioContactContent.form.messageLabel}
                     </label>
                     <textarea
                       id="portfolio-contact-message"
                       required
                       rows={5}
-                      placeholder={PORTFOLIO_CONTACT_CONTENT.form.messagePlaceholder}
+                      placeholder={portfolioContactContent.form.messagePlaceholder}
                       value={portfolioContactFormFields.message}
                       onChange={(event) =>
                         updatePortfolioContactFormField('message', event.target.value)
@@ -210,7 +207,7 @@ export function PortfolioContactPage() {
 
                   <button type="submit" className="portfolio-button portfolio-button--form-submit">
                     <Send className="portfolio-icon-current" size={16} />
-                    {PORTFOLIO_CONTACT_CONTENT.form.submitLabel}
+                    {portfolioContactContent.form.submitLabel}
                   </button>
                 </div>
               </form>
@@ -225,7 +222,7 @@ export function PortfolioContactPage() {
         >
           <FooterPortfolioContent
             brandLabel={PORTFOLIO_BRAND.footerBrand}
-            copyrightLabel={PORTFOLIO_CONTACT_CONTENT.footerCopyright}
+            copyrightLabel={portfolioContactContent.footerCopyright}
           />
         </motion.div>
       </div>

@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
 import { getPortfolioTypographyPresetClassName } from '@dataservices/config/portfolioTypographyPresets'
-import { PORTFOLIO_SKILLS_CONTENT } from '@dataservices/content/portfolioContent'
+import { usePortfolioSkillsContent } from '@/hooks/usePortfolioSkillsContent'
 
 /**
  * @function PortfolioSkillsPage
@@ -13,6 +13,7 @@ import { PORTFOLIO_SKILLS_CONTENT } from '@dataservices/content/portfolioContent
  * <PortfolioSkillsPage />
  */
 export function PortfolioSkillsPage() {
+  const { portfolioSkillsContent } = usePortfolioSkillsContent()
   const portfolioSkillsSectionRef = useRef(null)
   const isPortfolioSkillsInView = useInView(portfolioSkillsSectionRef, {
     margin: '-80px',
@@ -29,7 +30,7 @@ export function PortfolioSkillsPage() {
           className="portfolio-skills__header"
         >
           <span className={getPortfolioTypographyPresetClassName('sectionLabel')}>
-            {PORTFOLIO_SKILLS_CONTENT.sectionLabel}
+            {portfolioSkillsContent.sectionLabel}
           </span>
         </motion.div>
 
@@ -39,11 +40,11 @@ export function PortfolioSkillsPage() {
           transition={{ delay: 0.1, duration: 0.6 }}
           className={getPortfolioTypographyPresetClassName('sectionHeading')}
         >
-          {PORTFOLIO_SKILLS_CONTENT.heading}
+          {portfolioSkillsContent.heading}
         </motion.h2>
 
         <div className="portfolio-skills__grid">
-          {PORTFOLIO_SKILLS_CONTENT.categories.map((category, categoryIndex) => (
+          {portfolioSkillsContent.categories.map((category, categoryIndex) => (
             <motion.div
               key={category.name}
               initial={{ opacity: 0, y: 30 }}
@@ -92,10 +93,10 @@ export function PortfolioSkillsPage() {
           transition={{ delay: 0.5, duration: 0.6 }}
         >
           <p className={getPortfolioTypographyPresetClassName('commentLabel')}>
-            {PORTFOLIO_SKILLS_CONTENT.commentLabel}
+            {portfolioSkillsContent.commentLabel}
           </p>
           <div className="portfolio-tag-list">
-            {PORTFOLIO_SKILLS_CONTENT.tools.map((tool, toolIndex) => (
+            {portfolioSkillsContent.tools.map((tool, toolIndex) => (
               <motion.span
                 key={tool}
                 initial={{ opacity: 0, scale: 0.8 }}

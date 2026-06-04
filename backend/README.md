@@ -115,6 +115,31 @@ Update `frontend/.env.development`:
 VITE_API_BASE_URL=http://localhost:8081/api
 ```
 
+### `Unable to determine Dialect without JDBC metadata` (BUILD FAILURE on `mvn spring-boot:run`)
+
+Spring Boot could not connect to Postgres, so Hibernate never loaded JDBC metadata. This is **not** a Java compile error.
+
+**Fix — run in this order from the repo root:**
+
+```bash
+# 1) Start database (Docker Desktop must be running)
+docker compose up -d postgres
+
+# 2) Wait until healthy, then start API with .env loaded
+cd backend
+export $(grep -v '^#' ../.env | xargs)
+mvn spring-boot:run
+```
+
+Check Postgres is listening:
+
+```bash
+docker compose ps
+# or: nc -z localhost 5432 && echo "ok"
+```
+
+You must run `export $(grep -v '^#' ../.env | xargs)` before `mvn spring-boot:run` so `SPRING_DATASOURCE_*` match your Docker `.env`.
+
 ### Cannot connect to database
 
 1. Confirm Postgres is up: `docker compose ps` (from repo root)

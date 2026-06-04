@@ -6,7 +6,7 @@ import {
   type PortfolioProjectAccentColorKey,
 } from '@dataservices/config/portfolioDesignTokens'
 import { getPortfolioTypographyPresetClassName } from '@dataservices/config/portfolioTypographyPresets'
-import { PORTFOLIO_PROJECTS_CONTENT } from '@dataservices/content/portfolioContent'
+import { usePortfolioWorkContent } from '@/hooks/usePortfolioWorkContent'
 
 const buildPortfolioProjectAccentStyle = (
   accentColorKey: PortfolioProjectAccentColorKey,
@@ -25,6 +25,7 @@ const buildPortfolioProjectAccentStyle = (
  * <PortfolioWorkPage />
  */
 export function PortfolioWorkPage() {
+  const { portfolioWorkContent } = usePortfolioWorkContent()
   const [hoveredPortfolioProjectId, setHoveredPortfolioProjectId] = useState<number | null>(null)
   const portfolioProjectsSectionRef = useRef(null)
   const isPortfolioProjectsInView = useInView(portfolioProjectsSectionRef, {
@@ -42,7 +43,7 @@ export function PortfolioWorkPage() {
           className="portfolio-projects__header"
         >
           <span className={getPortfolioTypographyPresetClassName('sectionLabel')}>
-            {PORTFOLIO_PROJECTS_CONTENT.sectionLabel}
+            {portfolioWorkContent.sectionLabel}
           </span>
         </motion.div>
 
@@ -52,11 +53,11 @@ export function PortfolioWorkPage() {
           transition={{ delay: 0.1, duration: 0.6 }}
           className={getPortfolioTypographyPresetClassName('sectionHeading')}
         >
-          {PORTFOLIO_PROJECTS_CONTENT.heading}
+          {portfolioWorkContent.heading}
         </motion.h2>
 
         <div className="portfolio-projects__grid">
-          {PORTFOLIO_PROJECTS_CONTENT.projects.map((project, projectIndex) => {
+          {portfolioWorkContent.projects.map((project, projectIndex) => {
             const isPortfolioProjectHovered = hoveredPortfolioProjectId === project.id
             const portfolioProjectCardClassName = isPortfolioProjectHovered
               ? 'portfolio-project-card portfolio-project-card--active'
@@ -116,21 +117,21 @@ export function PortfolioWorkPage() {
                         className={getPortfolioTypographyPresetClassName('linkAction')}
                       >
                         <Code2 className="portfolio-icon-current" size={15} />{' '}
-                        {PORTFOLIO_PROJECTS_CONTENT.actionLabels.code}
+                        {portfolioWorkContent.actionLabels.code}
                       </button>
                       <button
                         type="button"
                         className={getPortfolioTypographyPresetClassName('linkAction')}
                       >
                         <ExternalLink className="portfolio-icon-current" size={15} />{' '}
-                        {PORTFOLIO_PROJECTS_CONTENT.actionLabels.live}
+                        {portfolioWorkContent.actionLabels.live}
                       </button>
                     </div>
                     <button
                       type="button"
                       className={getPortfolioTypographyPresetClassName('linkActionAccent')}
                     >
-                      {PORTFOLIO_PROJECTS_CONTENT.actionLabels.caseStudy}{' '}
+                      {portfolioWorkContent.actionLabels.caseStudy}{' '}
                       <ArrowRight className="portfolio-icon-current" size={14} />
                     </button>
                   </div>

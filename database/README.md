@@ -6,7 +6,7 @@ Each React content area has its own folder and migrations. Nav and landing are *
 
 ```
 database/
-├── 00-run-migrations.sh              # Docker: runs nav, then landing
+├── 00-run-migrations.sh              # Docker: runs all feature migrations in order
 ├── portfolio_nav_content/
 │   └── migrations/
 │       ├── 001_create_portfolio_nav_content.sql
@@ -15,6 +15,22 @@ database/
 │   └── migrations/
 │       ├── 001_create_portfolio_landing_page_content.sql
 │       └── 002_seed_portfolio_landing_page_content.sql
+├── portfolio_about_content/
+│   └── migrations/
+│       ├── 001_create_portfolio_about_content.sql
+│       └── 002_seed_portfolio_about_content.sql
+├── portfolio_work_content/
+│   └── migrations/
+│       ├── 001_create_portfolio_work_content.sql
+│       └── 002_seed_portfolio_work_content.sql
+├── portfolio_skills_content/
+│   └── migrations/
+│       ├── 001_create_portfolio_skills_content.sql
+│       └── 002_seed_portfolio_skills_content.sql
+├── portfolio_contact_content/
+│   └── migrations/
+│       ├── 001_create_portfolio_contact_content.sql
+│       └── 002_seed_portfolio_contact_content.sql
 └── scripts/
     ├── setup-postgres.sh
     └── run-migrations-local.sh     # Homebrew Postgres only
@@ -24,6 +40,10 @@ database/
 |--------|-------|----------------|-----------|
 | `portfolio_nav_content/` | `portfolio_nav_content` | `PORTFOLIO_NAV_CONTENT` | `PortfolioNav` |
 | `portfolio_landing_page_content/` | `portfolio_landing_page_content` | `PORTFOLIO_LANDING_PAGE_CONTENT` | `PortfolioLandingPage` |
+| `portfolio_about_content/` | `portfolio_about_content` | `PORTFOLIO_ABOUT_CONTENT` | `PortfolioAboutPage` |
+| `portfolio_work_content/` | `portfolio_work_content` | `PORTFOLIO_PROJECTS_CONTENT` | `PortfolioWorkPage` |
+| `portfolio_skills_content/` | `portfolio_skills_content` | `PORTFOLIO_SKILLS_CONTENT` | `PortfolioSkillsPage` |
+| `portfolio_contact_content/` | `portfolio_contact_content` | `PORTFOLIO_CONTACT_CONTENT` | `PortfolioContactPage` |
 
 ---
 
