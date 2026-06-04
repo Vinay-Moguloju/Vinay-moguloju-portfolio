@@ -41,7 +41,7 @@ setup_with_docker() {
   log "Verifying tables and seed data..."
   docker compose exec -T postgres psql -U "${POSTGRES_USER}" -d "${POSTGRES_DB}" <<'SQL'
 \dt portfolio_*_content
-SELECT 'portfolio_nav_content' AS table_name, id, hire_me_label, section_links FROM portfolio_nav_content;
+SELECT 'portfolio_nav_content' AS table_name, id, nav_brand_name, section_links FROM portfolio_nav_content;
 SELECT 'portfolio_landing_page_content' AS table_name, id, availability_badge, headline_accent, headline_muted FROM portfolio_landing_page_content;
 SQL
 

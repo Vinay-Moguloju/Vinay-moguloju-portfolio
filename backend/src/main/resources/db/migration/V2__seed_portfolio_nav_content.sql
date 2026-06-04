@@ -1,5 +1,3 @@
--- Seed: PORTFOLIO_NAV_CONTENT
-
 INSERT INTO portfolio_nav_content (
     hire_me_label,
     nav_brand_name,

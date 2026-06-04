@@ -34,7 +34,7 @@
   }
 }
 
-.portfolio-button--hire-me {
+.portfolio-button--contact-cta {
   background: var(--primary);
   border-radius: 9999px;
   color: var(--primary-foreground);
@@ -84,11 +84,12 @@
 .portfolio-nav-brand-button {
   @include portfolio-font-display;
   @include portfolio-focus-ring;
+  align-self: flex-start;
   background: transparent;
   border: 0;
   color: var(--foreground);
   cursor: pointer;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -103,7 +104,6 @@
   white-space: nowrap;
 
   @include portfolio-tablet-up {
-    flex: 0 1 auto;
     font-size: 1.1rem;
     max-width: none;
     white-space: normal;

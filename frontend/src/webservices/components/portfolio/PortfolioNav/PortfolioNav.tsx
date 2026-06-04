@@ -1,5 +1,8 @@
 import { AnimatePresence, motion } from 'motion/react'
-import { PORTFOLIO_ACCESSIBILITY_LABELS } from '@dataservices/content/portfolioContent'
+import {
+  PORTFOLIO_ACCESSIBILITY_LABELS,
+  PORTFOLIO_NAV_CONTACT_CTA_LABEL,
+} from '@dataservices/content/portfolioContent'
 import { usePortfolioNavContent } from '@/hooks/usePortfolioNavContent'
 import { usePortfolioNavInteractions } from '@/hooks/usePortfolioNavInteractions'
 import { UpperPortfolioNavContent } from '../UpperPortfolioNavContent'
@@ -7,7 +10,7 @@ import { UpperPortfolioNavContent } from '../UpperPortfolioNavContent'
 /**
  * @function PortfolioNav
  * @memberof webservices/components/portfolio/PortfolioNav
- * @description Fixed portfolio header with brand, section links, and hire-me CTA.
+ * @description Fixed portfolio header with brand, section links, and contact CTA.
  * @returns {JSX.Element}
  *
  * @example
@@ -30,7 +33,6 @@ export function PortfolioNav() {
       >
         <UpperPortfolioNavContent
           brandLabel={portfolioNavContent.navBrandName}
-          hireMeLabel={portfolioNavContent.hireMeLabel}
           isMobileMenuOpen={isPortfolioMobileMenuOpen}
           mobileMenuToggleLabels={{
             close: PORTFOLIO_ACCESSIBILITY_LABELS.mobileMenuClose,
@@ -65,9 +67,9 @@ export function PortfolioNav() {
             <button
               type="button"
               onClick={() => openPortfolioNavSectionModal('contact')}
-              className="portfolio-button portfolio-button--hire-me portfolio-nav__mobile-hire-me"
+              className="portfolio-button portfolio-button--contact-cta portfolio-nav__mobile-contact-cta"
             >
-              {portfolioNavContent.hireMeLabel}
+              {PORTFOLIO_NAV_CONTACT_CTA_LABEL}
             </button>
           </motion.div>
         )}

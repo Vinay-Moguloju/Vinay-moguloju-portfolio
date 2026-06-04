@@ -17,5 +17,5 @@ INSERT INTO portfolio_landing_page_content (
     'Senior Fullstack Engineer building scalable SPAs and micro-frontends across e-commerce, retail, and telecom — focused on React, Next.js, performance, and WCAG 2.1 AA accessibility.',
     'View my work',
     '["Senior Fullstack", "React / Next.js", "Micro-Frontends"]'::jsonb,
-    'Hire me'
+    'Contact Me'
 );

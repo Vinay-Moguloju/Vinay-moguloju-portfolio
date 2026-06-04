@@ -9,7 +9,6 @@ export type PortfolioNavSectionLink = {
 }
 
 export type PortfolioNavContent = {
-  hireMeLabel: string
   navBrandName: string
   sectionLinks: readonly PortfolioNavSectionLink[]
 }

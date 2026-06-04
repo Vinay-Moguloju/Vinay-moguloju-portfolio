@@ -28,14 +28,15 @@ export const PORTFOLIO_ACCESSIBILITY_LABELS = {
   nav: 'Portfolio',
 } as const
 
+/** Nav corner CTA — opens the contact section modal (same flow as landing secondary action). */
+export const PORTFOLIO_NAV_CONTACT_CTA_LABEL = 'Contact Me'
+
 export const PORTFOLIO_NAV_CONTENT = {
-  hireMeLabel: 'Hire me',
   navBrandName: 'Vinay Kumar Moguloju',
   sectionLinks: [
     { label: 'About', sectionId: 'about' },
     { label: 'Work', sectionId: 'work' },
     { label: 'Skills', sectionId: 'skills' },
-    { label: 'Contact', sectionId: 'contact' },
   ],
 } as const
 
@@ -48,7 +49,7 @@ export const PORTFOLIO_LANDING_PAGE_CONTENT = {
     'Senior Fullstack Engineer building scalable SPAs and micro-frontends across e-commerce, retail, and telecom — focused on React, Next.js, performance, and WCAG 2.1 AA accessibility.',
   primaryActionLabel: 'View my work',
   roleWords: ['Senior Fullstack', 'React / Next.js', 'Micro-Frontends'],
-  secondaryActionLabel: 'Hire me',
+  secondaryActionLabel: 'Contact Me',
 } as const
 
 export const PORTFOLIO_ABOUT_CONTENT = {
