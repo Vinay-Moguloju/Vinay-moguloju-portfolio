@@ -13,6 +13,15 @@ export type UsePortfolioNavContentArgs = {
   portfolioNavContentId?: number
 }
 
+const normalizePortfolioNavContent = (
+  portfolioNavContent: PortfolioNavContent,
+): PortfolioNavContent => ({
+  ...portfolioNavContent,
+  sectionLinks: portfolioNavContent.sectionLinks.filter(
+    (sectionLink) => sectionLink.sectionId !== 'contact',
+  ),
+})
+
 /**
  * @function usePortfolioNavContent
  * @memberof hooks/usePortfolioNavContent
@@ -45,7 +54,7 @@ export function usePortfolioNavContent(args: UsePortfolioNavContentArgs = {}) {
         })
 
         if (isMounted) {
-          setPortfolioNavContent(apiPortfolioNavContent)
+          setPortfolioNavContent(normalizePortfolioNavContent(apiPortfolioNavContent))
         }
       } catch {
         if (isMounted) {

@@ -39,13 +39,11 @@ curl "http://localhost:8080/api/portfolio-nav-content?id=1"
 
 ```json
 {
-  "hireMeLabel": "Hire me",
   "navBrandName": "Vinay Kumar Moguloju",
   "sectionLinks": [
     { "label": "About", "sectionId": "about" },
     { "label": "Work", "sectionId": "work" },
-    { "label": "Skills", "sectionId": "skills" },
-    { "label": "Contact", "sectionId": "contact" }
+    { "label": "Skills", "sectionId": "skills" }
   ]
 }
 ```
@@ -103,7 +101,7 @@ curl "http://localhost:8080/api/portfolio-landing-page-content?id=1"
     "React / Next.js",
     "Micro-Frontends"
   ],
-  "secondaryActionLabel": "Hire me"
+  "secondaryActionLabel": "Contact Me"
 }
 ```
 

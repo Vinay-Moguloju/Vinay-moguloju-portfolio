@@ -7,13 +7,12 @@
   justify-content: flex-start;
   overflow: hidden;
   padding-block: calc(#{$portfolio-nav-block-size} + 1rem) 1.5rem;
-  padding-inline: 1.5rem;
+  padding-inline: 0;
   position: relative;
 
   @include portfolio-tablet-up {
     justify-content: center;
     padding-block: 4rem 6rem;
-    padding-inline: 3rem;
   }
 
   &__canvas {
@@ -37,6 +36,7 @@
   }
 
   &__content {
+    align-items: flex-start;
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -44,12 +44,18 @@
     margin-inline: auto;
     max-width: $portfolio-container-max-width;
     min-height: 0;
+    padding-inline: 1.5rem;
     position: relative;
     width: 100%;
     z-index: 10;
+
+    @include portfolio-tablet-up {
+      padding-inline: 3rem;
+    }
   }
 
   &__badge-wrap {
+    align-self: flex-start;
     margin-bottom: 1rem;
     max-width: 100%;
   }

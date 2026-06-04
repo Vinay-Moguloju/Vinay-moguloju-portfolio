@@ -1,4 +1,5 @@
 import { Menu, X } from 'lucide-react'
+import { PORTFOLIO_NAV_CONTACT_CTA_LABEL } from '@dataservices/content/portfolioContent'
 
 type UpperPortfolioNavContentLink = {
   label: string
@@ -7,7 +8,6 @@ type UpperPortfolioNavContentLink = {
 
 type UpperPortfolioNavContentProps = {
   brandLabel: string
-  hireMeLabel: string
   isMobileMenuOpen: boolean
   mobileMenuToggleLabels: {
     close: string
@@ -29,7 +29,6 @@ type UpperPortfolioNavContentProps = {
  * @example
  * <UpperPortfolioNavContent
  *   brandLabel="Vinay.dev"
- *   hireMeLabel="Hire me"
  *   isMobileMenuOpen={false}
  *   mobileMenuToggleLabels={{ close: 'Close menu', open: 'Open menu' }}
  *   onBrandClick={() => {}}
@@ -40,7 +39,6 @@ type UpperPortfolioNavContentProps = {
  */
 export function UpperPortfolioNavContent({
   brandLabel,
-  hireMeLabel,
   isMobileMenuOpen,
   mobileMenuToggleLabels,
   onBrandClick,
@@ -49,48 +47,51 @@ export function UpperPortfolioNavContent({
   sectionLinks,
 }: UpperPortfolioNavContentProps) {
   return (
-    <div className="portfolio-nav__inner">
-      <button type="button" onClick={onBrandClick} className="portfolio-nav-brand-button">
-        {brandLabel}
-      </button>
+    <div className="portfolio-nav__bar">
+      <div className="portfolio-nav__inner">
+        <button type="button" onClick={onBrandClick} className="portfolio-nav-brand-button">
+          {brandLabel}
+        </button>
 
-      <div className="portfolio-nav__desktop-links">
-        {sectionLinks.map((link) => (
-          <button
-            key={link.sectionId}
-            type="button"
-            onClick={() => onNavigate(link.sectionId)}
-            className="portfolio-nav-link-button"
-          >
-            {link.label}
-          </button>
-        ))}
+        <div className="portfolio-nav__desktop-links">
+          {sectionLinks.map((link) => (
+            <button
+              key={link.sectionId}
+              type="button"
+              onClick={() => onNavigate(link.sectionId)}
+              className="portfolio-nav-link-button"
+            >
+              {link.label}
+            </button>
+          ))}
+        </div>
+
         <button
           type="button"
-          onClick={() => onNavigate('contact')}
-          className="portfolio-button portfolio-button--hire-me"
+          aria-expanded={isMobileMenuOpen}
+          aria-label={
+            isMobileMenuOpen
+              ? mobileMenuToggleLabels.close
+              : mobileMenuToggleLabels.open
+          }
+          className="portfolio-nav-mobile-toggle"
+          onClick={onMobileMenuToggle}
         >
-          {hireMeLabel}
+          {isMobileMenuOpen ? (
+            <X className="portfolio-icon-muted" size={20} />
+          ) : (
+            <Menu className="portfolio-icon-muted" size={20} />
+          )}
         </button>
       </div>
 
       <button
         type="button"
-        aria-expanded={isMobileMenuOpen}
-        aria-label={
-          isMobileMenuOpen
-            ? mobileMenuToggleLabels.close
-            : mobileMenuToggleLabels.open
-        }
-        className="portfolio-nav-mobile-toggle"
-        onClick={onMobileMenuToggle}
+        onClick={() => onNavigate('contact')}
+        className="portfolio-button portfolio-button--contact-cta portfolio-nav__contact-cta"
       >
-        {isMobileMenuOpen ? (
-          <X className="portfolio-icon-muted" size={20} />
-        ) : (
-          <Menu className="portfolio-icon-muted" size={20} />
-        )}
+        {PORTFOLIO_NAV_CONTACT_CTA_LABEL}
       </button>
-    </div>
+    </div>  
   )
 }

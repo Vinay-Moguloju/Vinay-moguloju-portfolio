@@ -19,9 +19,6 @@ public class PortfolioNavContentEntity {
   @Column(name = "created_at", nullable = false)
   private Instant createdAt;
 
-  @Column(name = "hire_me_label", nullable = false)
-  private String hireMeLabel;
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -38,10 +35,6 @@ public class PortfolioNavContentEntity {
 
   public Instant getCreatedAt() {
     return createdAt;
-  }
-
-  public String getHireMeLabel() {
-    return hireMeLabel;
   }
 
   public Long getId() {
