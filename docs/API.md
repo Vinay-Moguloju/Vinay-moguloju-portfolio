@@ -117,6 +117,78 @@ curl "http://localhost:8080/api/portfolio-landing-page-content?id=1"
 
 ---
 
+## 3. portfolio-about-content
+
+About modal copy for `PortfolioAboutPage` / `PORTFOLIO_ABOUT_CONTENT`.
+
+| Item | Value |
+|------|--------|
+| **Method** | `GET` |
+| **Path** | `/api/portfolio-about-content` |
+| **Query** | Optional `id` (long) |
+
+```bash
+curl "http://localhost:8080/api/portfolio-about-content"
+```
+
+**Response (200):** `sectionLabel`, `heading`, `paragraphs` (string[]), `stats` (`{ label, value }[]`), `statusChip`, `imageAlt`
+
+---
+
+## 4. portfolio-work-content
+
+Work modal copy for `PortfolioWorkPage` / `PORTFOLIO_PROJECTS_CONTENT`.
+
+| Item | Value |
+|------|--------|
+| **Method** | `GET` |
+| **Path** | `/api/portfolio-work-content` |
+| **Query** | Optional `id` (long) |
+
+```bash
+curl "http://localhost:8080/api/portfolio-work-content"
+```
+
+**Response (200):** `sectionLabel`, `heading`, `actionLabels` (`caseStudy`, `code`, `live`), `projects` (array with `id`, `title`, `tagline`, `category`, `year`, `description`, `accentColorKey`, `imageUrl`, `stack`)
+
+---
+
+## 5. portfolio-skills-content
+
+Skills modal copy for `PortfolioSkillsPage` / `PORTFOLIO_SKILLS_CONTENT`.
+
+| Item | Value |
+|------|--------|
+| **Method** | `GET` |
+| **Path** | `/api/portfolio-skills-content` |
+| **Query** | Optional `id` (long) |
+
+```bash
+curl "http://localhost:8080/api/portfolio-skills-content"
+```
+
+**Response (200):** `sectionLabel`, `heading`, `commentLabel`, `categories` (`{ name, skills: [{ name, level }] }[]`), `tools` (string[])
+
+---
+
+## 6. portfolio-contact-content
+
+Contact modal copy for `PortfolioContactPage` / `PORTFOLIO_CONTACT_CONTENT`.
+
+| Item | Value |
+|------|--------|
+| **Method** | `GET` |
+| **Path** | `/api/portfolio-contact-content` |
+| **Query** | Optional `id` (long) |
+
+```bash
+curl "http://localhost:8080/api/portfolio-contact-content"
+```
+
+**Response (200):** `sectionLabel`, `headingPrimary`, `headingAccent`, `headingSuffix`, `intro`, `form` (labels/placeholders), `socialLinks`, `successTitle`, `successMessage`, `footerCopyright`
+
+---
+
 ## Local vs GitHub Pages
 
 | Piece | Local | GitHub Pages |

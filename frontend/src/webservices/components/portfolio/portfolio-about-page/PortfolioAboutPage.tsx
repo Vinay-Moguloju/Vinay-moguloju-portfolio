@@ -1,10 +1,8 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
-import {
-  PORTFOLIO_ABOUT_CONTENT,
-  PORTFOLIO_ABOUT_IMAGE_URL,
-} from '@dataservices/content/portfolioContent'
+import { PORTFOLIO_ABOUT_IMAGE_URL } from '@dataservices/content/portfolioContent'
 import { getPortfolioTypographyPresetClassName } from '@dataservices/config/portfolioTypographyPresets'
+import { usePortfolioAboutContent } from '@/hooks/usePortfolioAboutContent'
 
 /**
  * @function PortfolioAboutPage
@@ -16,6 +14,7 @@ import { getPortfolioTypographyPresetClassName } from '@dataservices/config/port
  * <PortfolioAboutPage />
  */
 export function PortfolioAboutPage() {
+  const { portfolioAboutContent } = usePortfolioAboutContent()
   const portfolioAboutSectionRef = useRef(null)
   const isPortfolioAboutInView = useInView(portfolioAboutSectionRef, {
     margin: '-100px',
@@ -32,7 +31,7 @@ export function PortfolioAboutPage() {
           className="portfolio-section-header"
         >
           <span className={getPortfolioTypographyPresetClassName('sectionLabel')}>
-            {PORTFOLIO_ABOUT_CONTENT.sectionLabel}
+            {portfolioAboutContent.sectionLabel}
           </span>
         </motion.div>
 
@@ -45,10 +44,10 @@ export function PortfolioAboutPage() {
             <h2
               className={`${getPortfolioTypographyPresetClassName('displayHeadingLg')} portfolio-about__heading`}
             >
-              {PORTFOLIO_ABOUT_CONTENT.heading}
+              {portfolioAboutContent.heading}
             </h2>
             <div className="portfolio-about__paragraphs">
-              {PORTFOLIO_ABOUT_CONTENT.paragraphs.map((paragraph) => (
+              {portfolioAboutContent.paragraphs.map((paragraph) => (
                 <p
                   key={paragraph}
                   className={getPortfolioTypographyPresetClassName('body')}
@@ -59,7 +58,7 @@ export function PortfolioAboutPage() {
             </div>
 
             <div className="portfolio-about__stats">
-              {PORTFOLIO_ABOUT_CONTENT.stats.map((stat, statIndex) => (
+              {portfolioAboutContent.stats.map((stat, statIndex) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 20 }}
@@ -86,7 +85,7 @@ export function PortfolioAboutPage() {
           >
             <div className="portfolio-about__image-wrap">
               <img
-                alt={PORTFOLIO_ABOUT_CONTENT.imageAlt}
+                alt={portfolioAboutContent.imageAlt}
                 className="portfolio-about__image"
                 src={PORTFOLIO_ABOUT_IMAGE_URL}
               />
@@ -95,7 +94,7 @@ export function PortfolioAboutPage() {
                 <div className="portfolio-image-badge">
                   <span className="portfolio-status-dot portfolio-status-dot--lg" />
                   <span className={getPortfolioTypographyPresetClassName('statusChipText')}>
-                    {PORTFOLIO_ABOUT_CONTENT.statusChip}
+                    {portfolioAboutContent.statusChip}
                   </span>
                 </div>
               </div>

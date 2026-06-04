@@ -38,3 +38,7 @@ run_feature_migrations() {
 
 run_feature_migrations portfolio_nav_content
 run_feature_migrations portfolio_landing_page_content
+run_feature_migrations portfolio_about_content
+run_feature_migrations portfolio_work_content
+run_feature_migrations portfolio_skills_content
+run_feature_migrations portfolio_contact_content

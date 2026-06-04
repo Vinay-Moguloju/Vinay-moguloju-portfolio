@@ -4,6 +4,10 @@
  */
 
 export const PORTFOLIO_API_PATHS = {
+  portfolioAboutContent: '/portfolio-about-content',
+  portfolioContactContent: '/portfolio-contact-content',
   portfolioLandingPageContent: '/portfolio-landing-page-content',
   portfolioNavContent: '/portfolio-nav-content',
+  portfolioSkillsContent: '/portfolio-skills-content',
+  portfolioWorkContent: '/portfolio-work-content',
 } as const

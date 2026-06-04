@@ -1,3 +1,7 @@
 export { apiClient } from './client'
+export { fetchPortfolioAboutContent } from './portfolioAboutContentApi'
+export { fetchPortfolioContactContent } from './portfolioContactContentApi'
 export { fetchPortfolioLandingPageContent } from './portfolioLandingPageContentApi'
 export { fetchPortfolioNavContent } from './portfolioNavContentApi'
+export { fetchPortfolioSkillsContent } from './portfolioSkillsContentApi'
+export { fetchPortfolioWorkContent } from './portfolioWorkContentApi'
