@@ -1,20 +1,19 @@
 import { usePortfolioLandingPageContent } from '@/hooks/usePortfolioLandingPageContent'
 import { usePortfolioLandingPageParticleCanvas } from '@/hooks/usePortfolioLandingPageParticleCanvas'
-import { usePortfolioSectionModal } from '@/hooks/usePortfolioSectionModal'
 import {
   CanvasLayer,
   LowerPortfolioContent,
-  PortfolioLandingActionRow,
   PortfolioLandingAvailabilityBadge,
   PortfolioLandingHeadline,
   PortfolioLandingIntroRow,
+  PortfolioLandingRoleList,
   RadialGlowLayer,
 } from '../../common'
 
 /**
  * @function PortfolioLandingPage
  * @memberof webservices/components/portfolio/portfolio-landing-page
- * @description Renders the portfolio landing page with animated canvas background and section CTAs.
+ * @description Renders the portfolio landing page with animated canvas background and hero copy.
  * @returns {JSX.Element}
  *
  * @example
@@ -23,7 +22,6 @@ import {
 export function PortfolioLandingPage() {
   const { portfolioLandingPageContent } = usePortfolioLandingPageContent()
   const { portfolioLandingPageCanvasRef } = usePortfolioLandingPageParticleCanvas()
-  const { openPortfolioSectionModal } = usePortfolioSectionModal()
 
   return (
     <section className="portfolio-landing-page">
@@ -42,16 +40,8 @@ export function PortfolioLandingPage() {
           headlineAccent={portfolioLandingPageContent.headlineAccent}
           headlineMuted={portfolioLandingPageContent.headlineMuted}
         />
-        <PortfolioLandingIntroRow
-          intro={portfolioLandingPageContent.intro}
-          roleWords={portfolioLandingPageContent.roleWords}
-        />
-        <PortfolioLandingActionRow
-          onPrimaryActionClick={() => openPortfolioSectionModal('work')}
-          onSecondaryActionClick={() => openPortfolioSectionModal('contact')}
-          primaryActionLabel={portfolioLandingPageContent.primaryActionLabel}
-          secondaryActionLabel={portfolioLandingPageContent.secondaryActionLabel}
-        />
+        <PortfolioLandingIntroRow intro={portfolioLandingPageContent.intro} />
+        <PortfolioLandingRoleList roleWords={portfolioLandingPageContent.roleWords} />
       </LowerPortfolioContent>
     </section>
   )
