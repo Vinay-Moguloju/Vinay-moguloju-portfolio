@@ -24,6 +24,9 @@ public class PortfolioLandingPageContentEntity {
   @Column(name = "headline_accent", nullable = false)
   private String headlineAccent;
 
+  @Column(name = "headline_display_name", nullable = false)
+  private String headlineDisplayName;
+
   @Column(name = "headline_muted", nullable = false)
   private String headlineMuted;
 
@@ -57,6 +60,10 @@ public class PortfolioLandingPageContentEntity {
 
   public String getHeadlineAccent() {
     return headlineAccent;
+  }
+
+  public String getHeadlineDisplayName() {
+    return headlineDisplayName;
   }
 
   public String getHeadlineMuted() {

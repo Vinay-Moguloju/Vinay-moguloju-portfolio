@@ -8,4 +8,5 @@ import java.util.List;
  */
 public record PortfolioNavContentResponse(
     @JsonProperty("hireMeLabel") String hireMeLabel,
+    @JsonProperty("navBrandName") String navBrandName,
     @JsonProperty("sectionLinks") List<PortfolioNavSectionLinkResponse> sectionLinks) {}

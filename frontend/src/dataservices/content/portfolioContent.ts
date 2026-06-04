@@ -14,6 +14,7 @@ export const PORTFOLIO_BRAND = {
   email: 'mogulojuvinaykumar@gmail.com',
   footerBrand: 'Vinay Kumar',
   fullName: 'Vinay Kumar Moguloju',
+  landingHeadlineName: 'Mr.Moguloju',
   location: 'Melissa, TX',
   phone: '571-295-8383',
   title: 'Senior Fullstack Engineer',
@@ -29,6 +30,7 @@ export const PORTFOLIO_ACCESSIBILITY_LABELS = {
 
 export const PORTFOLIO_NAV_CONTENT = {
   hireMeLabel: 'Hire me',
+  navBrandName: 'Vinay Kumar Moguloju',
   sectionLinks: [
     { label: 'About', sectionId: 'about' },
     { label: 'Work', sectionId: 'work' },
@@ -40,6 +42,7 @@ export const PORTFOLIO_NAV_CONTENT = {
 export const PORTFOLIO_LANDING_PAGE_CONTENT = {
   availabilityBadge: 'Open to senior Fullstack opportunities',
   headlineAccent: 'Builds Things',
+  headlineDisplayName: 'Mr.Moguloju',
   headlineMuted: 'That Matter.',
   intro:
     'Senior Fullstack Engineer building scalable SPAs and micro-frontends across e-commerce, retail, and telecom — focused on React, Next.js, performance, and WCAG 2.1 AA accessibility.',

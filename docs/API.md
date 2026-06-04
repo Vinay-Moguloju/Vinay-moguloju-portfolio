@@ -40,6 +40,7 @@ curl "http://localhost:8080/api/portfolio-nav-content?id=1"
 ```json
 {
   "hireMeLabel": "Hire me",
+  "navBrandName": "Vinay Kumar Moguloju",
   "sectionLinks": [
     { "label": "About", "sectionId": "about" },
     { "label": "Work", "sectionId": "work" },
@@ -93,6 +94,7 @@ curl "http://localhost:8080/api/portfolio-landing-page-content?id=1"
 {
   "availabilityBadge": "Open to senior Fullstack opportunities",
   "headlineAccent": "Builds Things",
+  "headlineDisplayName": "Mr.Moguloju",
   "headlineMuted": "That Matter.",
   "intro": "Senior Fullstack Engineer building scalable SPAs and micro-frontends across e-commerce, retail, and telecom — focused on React, Next.js, performance, and WCAG 2.1 AA accessibility.",
   "primaryActionLabel": "View my work",

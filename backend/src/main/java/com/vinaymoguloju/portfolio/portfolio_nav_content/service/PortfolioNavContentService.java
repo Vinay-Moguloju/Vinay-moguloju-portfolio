@@ -41,6 +41,9 @@ public class PortfolioNavContentService {
 
   private PortfolioNavContentResponse mapPortfolioNavContentEntityToResponse(
       PortfolioNavContentEntity entity) {
-    return new PortfolioNavContentResponse(entity.getHireMeLabel(), entity.getSectionLinks());
+    return new PortfolioNavContentResponse(
+        entity.getHireMeLabel(),
+        entity.getNavBrandName(),
+        entity.getSectionLinks());
   }
 }

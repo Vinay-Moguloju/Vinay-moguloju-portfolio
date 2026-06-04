@@ -1,4 +1,3 @@
-import { PORTFOLIO_BRAND } from '@dataservices/content/portfolioContent'
 import { usePortfolioLandingPageContent } from '@/hooks/usePortfolioLandingPageContent'
 import { usePortfolioLandingPageParticleCanvas } from '@/hooks/usePortfolioLandingPageParticleCanvas'
 import { usePortfolioSectionModal } from '@/hooks/usePortfolioSectionModal'
@@ -39,7 +38,7 @@ export function PortfolioLandingPage() {
           availabilityLabel={portfolioLandingPageContent.availabilityBadge}
         />
         <PortfolioLandingHeadline
-          displayName={PORTFOLIO_BRAND.displayName}
+          displayName={portfolioLandingPageContent.headlineDisplayName}
           headlineAccent={portfolioLandingPageContent.headlineAccent}
           headlineMuted={portfolioLandingPageContent.headlineMuted}
         />

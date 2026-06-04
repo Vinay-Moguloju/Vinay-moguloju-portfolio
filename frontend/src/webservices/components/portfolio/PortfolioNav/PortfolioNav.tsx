@@ -1,8 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react'
-import {
-  PORTFOLIO_ACCESSIBILITY_LABELS,
-  PORTFOLIO_BRAND,
-} from '@dataservices/content/portfolioContent'
+import { PORTFOLIO_ACCESSIBILITY_LABELS } from '@dataservices/content/portfolioContent'
 import { usePortfolioNavContent } from '@/hooks/usePortfolioNavContent'
 import { usePortfolioNavInteractions } from '@/hooks/usePortfolioNavInteractions'
 import { UpperPortfolioNavContent } from '../UpperPortfolioNavContent'
@@ -32,7 +29,7 @@ export function PortfolioNav() {
         className="portfolio-nav portfolio-nav--top"
       >
         <UpperPortfolioNavContent
-          brandLabel={PORTFOLIO_BRAND.displayName}
+          brandLabel={portfolioNavContent.navBrandName}
           hireMeLabel={portfolioNavContent.hireMeLabel}
           isMobileMenuOpen={isPortfolioMobileMenuOpen}
           mobileMenuToggleLabels={{
