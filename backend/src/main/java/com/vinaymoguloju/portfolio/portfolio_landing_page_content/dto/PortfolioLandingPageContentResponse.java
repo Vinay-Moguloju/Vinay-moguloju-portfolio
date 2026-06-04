@@ -9,6 +9,7 @@ import java.util.List;
 public record PortfolioLandingPageContentResponse(
     @JsonProperty("availabilityBadge") String availabilityBadge,
     @JsonProperty("headlineAccent") String headlineAccent,
+    @JsonProperty("headlineDisplayName") String headlineDisplayName,
     @JsonProperty("headlineMuted") String headlineMuted,
     String intro,
     @JsonProperty("primaryActionLabel") String primaryActionLabel,

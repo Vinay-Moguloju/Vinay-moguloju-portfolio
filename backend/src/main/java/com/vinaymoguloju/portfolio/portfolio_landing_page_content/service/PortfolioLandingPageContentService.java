@@ -46,6 +46,7 @@ public class PortfolioLandingPageContentService {
     return new PortfolioLandingPageContentResponse(
         entity.getAvailabilityBadge(),
         entity.getHeadlineAccent(),
+        entity.getHeadlineDisplayName(),
         entity.getHeadlineMuted(),
         entity.getIntro(),
         entity.getPrimaryActionLabel(),

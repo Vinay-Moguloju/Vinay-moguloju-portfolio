@@ -26,6 +26,9 @@ public class PortfolioNavContentEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "nav_brand_name", nullable = false)
+  private String navBrandName;
+
   @JdbcTypeCode(SqlTypes.JSON)
   @Column(name = "section_links", columnDefinition = "jsonb", nullable = false)
   private List<PortfolioNavSectionLinkResponse> sectionLinks;
@@ -43,6 +46,10 @@ public class PortfolioNavContentEntity {
 
   public Long getId() {
     return id;
+  }
+
+  public String getNavBrandName() {
+    return navBrandName;
   }
 
   public List<PortfolioNavSectionLinkResponse> getSectionLinks() {

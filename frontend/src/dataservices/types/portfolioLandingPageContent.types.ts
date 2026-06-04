@@ -6,6 +6,7 @@
 export type PortfolioLandingPageContent = {
   availabilityBadge: string
   headlineAccent: string
+  headlineDisplayName: string
   headlineMuted: string
   intro: string
   primaryActionLabel: string
