@@ -1,4 +1,5 @@
 export { PortfolioLandingPage } from './portfolio-landing-page'
+export { PortfolioFooter } from './PortfolioFooter'
 export { PortfolioNav } from './PortfolioNav'
 export { PortfolioAboutPage } from './portfolio-about-page'
 export { PortfolioWorkPage } from './portfolio-work-page'

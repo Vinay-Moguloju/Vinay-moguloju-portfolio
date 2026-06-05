@@ -1,0 +1,33 @@
+@import '../_mixins.scss';
+
+.portfolio-footer {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  transition: background-color 0.5s ease, backdrop-filter 0.5s ease, border-color 0.5s ease;
+  z-index: $portfolio-nav-z-index - 10;
+
+  &--bottom {
+    backdrop-filter: none;
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &__bar {
+    align-items: center;
+    display: flex;
+    margin-inline: auto;
+    max-width: $portfolio-container-max-width;
+    min-height: $portfolio-nav-block-size;
+    padding-block: 0.75rem;
+    padding-inline: 1.5rem;
+    width: 100%;
+
+    @include portfolio-tablet-up {
+      min-height: auto;
+      padding-block: 1rem;
+      padding-inline: 3rem;
+    }
+  }
+}

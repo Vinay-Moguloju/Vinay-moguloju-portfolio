@@ -10,11 +10,9 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { getPortfolioTypographyPresetClassName } from '@dataservices/config/portfolioTypographyPresets'
-import { PORTFOLIO_BRAND } from '@dataservices/content/portfolioContent'
 import type { PortfolioContactProfileKey } from '@dataservices/types/portfolioContactContent.types'
 import { usePortfolioContactContent } from '@/hooks/usePortfolioContactContent'
 import { usePortfolioContactForm } from '@/hooks/usePortfolioContactForm'
-import { FooterPortfolioContent } from '../../common'
 
 const PORTFOLIO_CONTACT_SOCIAL_ICON_MAP: Record<PortfolioContactProfileKey, LucideIcon> = {
   email: Mail,
@@ -214,17 +212,6 @@ export function PortfolioContactPage() {
             )}
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isPortfolioContactInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.6, duration: 0.6 }}
-        >
-          <FooterPortfolioContent
-            brandLabel={PORTFOLIO_BRAND.footerBrand}
-            copyrightLabel={portfolioContactContent.footerCopyright}
-          />
-        </motion.div>
       </div>
     </section>
   )

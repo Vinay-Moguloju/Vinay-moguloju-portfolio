@@ -6,13 +6,14 @@
   height: 100svh;
   justify-content: flex-start;
   overflow: hidden;
-  padding-block: calc(#{$portfolio-nav-block-size} + 1rem) 1.5rem;
+  padding-block: calc(#{$portfolio-nav-block-size} + 0.5rem)
+    calc(#{$portfolio-nav-block-size} + 0.5rem);
   padding-inline: 0;
   position: relative;
 
   @include portfolio-tablet-up {
     justify-content: center;
-    padding-block: 4rem 6rem;
+    padding-block: 4rem calc(#{$portfolio-nav-block-size} + 1.5rem);
   }
 
   &__canvas {
@@ -40,7 +41,7 @@
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     margin-inline: auto;
     max-width: $portfolio-container-max-width;
     min-height: 0;
@@ -50,6 +51,7 @@
     z-index: 10;
 
     @include portfolio-tablet-up {
+      justify-content: center;
       padding-inline: 3rem;
     }
   }

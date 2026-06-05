@@ -12,7 +12,6 @@ import {
 export const PORTFOLIO_BRAND = {
   displayName: 'Vinay Kumar',
   email: 'mogulojuvinaykumar@gmail.com',
-  footerBrand: 'Vinay Kumar',
   fullName: 'Vinay Kumar Moguloju',
   landingHeadlineName: 'Mr.Moguloju',
   location: 'Melissa, TX',
@@ -21,6 +20,7 @@ export const PORTFOLIO_BRAND = {
 } as const
 
 export const PORTFOLIO_ACCESSIBILITY_LABELS = {
+  footer: 'Site footer',
   home: 'Home',
   mobileMenuClose: 'Close menu',
   mobileMenuOpen: 'Open menu',
@@ -197,7 +197,7 @@ export const PORTFOLIO_SKILLS_CONTENT = {
 
 export const PORTFOLIO_CONTACT_CONTENT = {
   footerCopyright:
-    '© 2026 Vinay Kumar Moguloju · Senior Fullstack Engineer · Built with React + TypeScript',
+    'Built with React + TypeScript + Vite · Tailwind CSS · SCSS · Motion · React Router · Axios · Spring Boot · Java · PostgreSQL · Flyway · Maven · Docker · GitHub Actions · GitHub Pages',
   form: {
     emailLabel: 'Email',
     emailPlaceholder: 'you@example.com',

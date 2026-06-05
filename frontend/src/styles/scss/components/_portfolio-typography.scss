@@ -106,13 +106,6 @@
   margin-bottom: 0.5rem;
 }
 
-.portfolio-footer-brand {
-  @include portfolio-font-display;
-  color: var(--portfolio-color-text-primary);
-  font-size: var(--portfolio-font-size-footer-brand);
-  font-weight: var(--portfolio-font-weight-bold);
-}
-
 .portfolio-footer-meta {
   @include portfolio-font-mono;
   color: var(--portfolio-color-text-muted);

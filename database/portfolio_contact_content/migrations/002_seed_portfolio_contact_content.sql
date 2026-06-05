@@ -12,7 +12,7 @@ INSERT INTO portfolio_contact_content (
     success_message,
     success_title
 ) VALUES (
-    '© 2026 Vinay Kumar Moguloju · Senior Fullstack Engineer · Built with React + TypeScript',
+    'Built with React + TypeScript + Vite · Tailwind CSS · SCSS · Motion · React Router · Axios · Spring Boot · Java · PostgreSQL · Flyway · Maven · Docker · GitHub Actions · GitHub Pages',
     '{"emailLabel":"Email","emailPlaceholder":"you@example.com","messageLabel":"Message","messagePlaceholder":"Tell me about the role, project, or team...","nameLabel":"Name","namePlaceholder":"Your name","submitLabel":"Send message","title":"Send a message"}'::jsonb,
     ' Senior Fullstack teams',
     'Let''s connect for',
