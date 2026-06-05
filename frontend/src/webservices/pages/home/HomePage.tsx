@@ -1,5 +1,9 @@
 import { PortfolioSectionModalProvider } from '@/hooks/usePortfolioSectionModal'
-import { PortfolioLandingPage, PortfolioNav } from '@webservices/components/portfolio'
+import {
+  PortfolioFooter,
+  PortfolioLandingPage,
+  PortfolioNav,
+} from '@webservices/components/portfolio'
 import { PORTFOLIO_ACCESSIBILITY_LABELS } from '@dataservices/content/portfolioContent'
 import { PortfolioSectionModalHost } from './PortfolioSectionModalHost'
 
@@ -18,6 +22,7 @@ export function HomePage() {
       <main aria-label={PORTFOLIO_ACCESSIBILITY_LABELS.home} className="portfolio-page">
         <PortfolioNav />
         <PortfolioLandingPage />
+        <PortfolioFooter />
         <PortfolioSectionModalHost />
       </main>
     </PortfolioSectionModalProvider>

@@ -11,7 +11,6 @@ export const PORTFOLIO_TYPOGRAPHY_PRESET_CLASS_NAMES = {
   displayHeadingLg: 'portfolio-display-heading-lg',
   displayHeadingMd: 'portfolio-display-heading-md',
   displayHeadingXl: 'portfolio-display-heading-xl',
-  footerBrand: 'portfolio-footer-brand',
   footerMeta: 'portfolio-footer-meta',
   formLabel: 'portfolio-form-label',
   formSuccessCopy: 'portfolio-form-success-copy',
